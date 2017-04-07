@@ -10,3 +10,5 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
 }
+
+module.exports = uiRouterSetup;
