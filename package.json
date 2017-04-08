@@ -29,7 +29,8 @@
     "method-override": "^2.3.8",
     "mongoose": "^4.9.3",
     "morgan": "^1.8.1",
-    "pryjs": "^1.0.3"
+    "pryjs": "^1.0.3",
+    "xhr-request": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
