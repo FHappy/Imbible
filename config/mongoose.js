@@ -8,6 +8,9 @@ module.exports = function() {
     var db = mongoose.connection;
 
     //require our models here
+    require('./../server/models/reviews.model.js');
+    require('./../server/models/cocktails.model.js');
+    require('./../server/models/users.model.js');
 
     db.on('error', function(err) {
         console.log(err);
