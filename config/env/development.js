@@ -1,4 +1,4 @@
 module.exports = {
-    db: 'mongodb://localhost/project-3',
+    db: 'mongodb://localhost/Imbible',
     sessionSecret: 'developmentDreamTeam'
 }
