@@ -2,7 +2,7 @@ var Cocktail                          = require('mongoose').model('Cocktail');
 var request                           = require('xhr-request');
 var mongoose                          = require('mongoose');
 
-module.exports = function() {
+module.exports = function(req, res, next) {
   request
       ('https://raw.githubusercontent.com/teijo/iba-cocktails/master/recipes.json', {
           json: true
@@ -11,7 +11,7 @@ module.exports = function() {
 
           var cocktails = data;
           console.log(cocktails);
-          console.log(cocktails.length);
+          console.log('cocktails array lenght is: ' + cocktails.length);
 
           // for (cocktail of cocktails) {
           //
@@ -27,10 +27,11 @@ module.exports = function() {
                   ingredients: cocktails[i].ingredients
             });
 
-            Cocktail.save(newCocktail, function(err) {
+            newCocktail.save(function(err) {
               if (err) {console.log(err);}
             });
           }
       });
 
+      res.redirect('/');
 }

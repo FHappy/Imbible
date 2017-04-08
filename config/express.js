@@ -27,5 +27,7 @@ module.exports = function() {
 
     app.use(express.static('./public'));
 
+    require('../server/routes/cocktails.routes.js')(app);
+
     return app;
 };
