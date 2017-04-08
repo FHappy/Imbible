@@ -22,10 +22,13 @@
     "angular": "^1.6.1",
     "angular-ui-router": "^0.4.2",
     "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
+    "glob": "^7.1.1",
     "method-override": "^2.3.8",
     "mongoose": "^4.9.3",
+    "morgan": "^1.8.1",
     "pryjs": "^1.0.3"
   },
   "devDependencies": {
