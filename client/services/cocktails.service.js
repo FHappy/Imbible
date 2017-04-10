@@ -8,6 +8,7 @@ function CocktailsService($http) {
     const self = this;
 
     self.loadAll = loadAll;
+    self.loadCocktail = loadCocktail;
 
 
     function loadAll() {

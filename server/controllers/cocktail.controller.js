@@ -10,11 +10,11 @@ exports.loadAll = function(req, res, next) {
 }
 
 exports.loadCocktail = function(req, res, next) {
-	Cocktail.findById(req.params.id)
+  var id = req.params.cocktailId;
+	Cocktail.findById({_id: id})
 		.exec(function (err, cocktail) {
 			if (err) {res.json({message: 'Could not find that cocktail : ' + err})};
 
 			res.json({cocktail: cocktail});
-		}).select('-__v');
+		});
 }
-

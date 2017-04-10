@@ -6,6 +6,11 @@ function CocktailsShowController(CocktailsService, $stateParams) {
 
 	vm.cocktail = {};
 
+	activate();
+	function activate() {
+		loadCocktail();
+	}
+
 	function loadCocktail() {
 		CocktailsService
 			.loadCocktail($stateParams.cocktailId)

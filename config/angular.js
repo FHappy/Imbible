@@ -8,7 +8,7 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
             template: '<cocktails-list></cocktails-list>'
         })
         .state('cocktailShow', {
-        	url: '/:_id',
+        	url: '/show/:cocktailId',
         	template: '<cocktail></cocktail>'
         });
 
