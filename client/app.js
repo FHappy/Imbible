@@ -7,12 +7,13 @@ angular
     .config(uiRouterSetup);
 
 uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
-function uiRouterSetup($stateProvider, $urlRouterProvider) {
-	$stateProvider
-		.state('home'), {
-			url: '/',
-			template: 'cocktailsList'
-		};
 
-		$urlRouterProvider.otherwise('/');
+function uiRouterSetup($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('home', {
+            url: '/',
+            template: '<cocktails-list></cockatails-list>'
+        });
+
+    $urlRouterProvider.otherwise('/');
 }
