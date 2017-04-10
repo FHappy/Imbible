@@ -70,13 +70,54 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktail.show/cocktails.show.controller.js'");
+CocktailsShowController.$inject = ['CocktailsService', '$stateParams'];
+
+function CocktailsShowController(CocktailsService, $stateParams) {
+
+	const vm = this;
+
+	vm.cocktail = {};
+
+	activate();
+	function activate() {
+		loadCocktail();
+	}
+
+	function loadCocktail() {
+		CocktailsService.loadCocktail($stateParams.cocktailId).then(function resolve(response) {
+			vm.cocktail = response.data.cocktail;
+		});
+	}
+}
+
+module.exports = CocktailsShowController;
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktails.list/cocktails.list.controller.js'");
+CocktailsListController.$inject = ['CocktailsService', '$stateParams'];
+
+function CocktailsListController(CocktailsService, $stateParams) {
+    const vm = this;
+
+    vm.cocktails = [];
+
+    activate();
+
+    function activate() {
+        loadAllCocktails();
+    }
+
+    function loadAllCocktails() {
+        CocktailsService.loadAll().then(function resolve(response) {
+            vm.cocktails = response.data.cocktails;
+            console.log(vm.cocktails);
+        });
+    }
+}
+
+module.exports = CocktailsListController;
 
 /***/ }),
 /* 2 */
@@ -90,15 +131,31 @@ angular.module('imbibleApp', ['ui.router']).config(uiRouterSetup);
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktail.show/cocktails.show.component.js'");
+const controller = __webpack_require__(0);
+const template = __webpack_require__(11);
+
+const cocktailShowComponent = {
+	controller: controller,
+	template: template
+};
+
+angular.module('imbibleApp').component('cocktail', cocktailShowComponent);
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktails.list/cocktails.list.component.js'");
+const controller = __webpack_require__(1);
+const template = __webpack_require__(12);
+
+const CocktailsListComponent = {
+    controller: controller,
+    template: template
+};
+
+angular.module('imbibleApp').component('cocktailsList', CocktailsListComponent);
 
 /***/ }),
 /* 5 */
@@ -110,7 +167,24 @@ throw new Error("Module build failed: Error: ENOENT: no such file or directory, 
 /* 6 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/services/cocktails.service.js'");
+angular.module('imbibleApp').service('CocktailsService', CocktailsService);
+
+CocktailsService.$inject = ['$http'];
+
+function CocktailsService($http) {
+    const self = this;
+
+    self.loadAll = loadAll;
+    self.loadCocktail = loadCocktail;
+
+    function loadAll() {
+        return $http.get('/api/cocktails');
+    }
+
+    function loadCocktail(cocktailId) {
+        return $http.get('/api/cocktails/' + cocktailId);
+    }
+}
 
 /***/ }),
 /* 7 */
@@ -37804,9 +37878,12 @@ module.exports = angular;
 uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function uiRouterSetup($stateProvider, $urlRouterProvider) {
-    $stateProvider.state('home', {
+    $stateProvider.state('list', {
         url: '/',
-        template: ''
+        template: '<cocktails-list></cocktails-list>'
+    }).state('cocktailShow', {
+        url: '/show/:cocktailId',
+        template: '<cocktail></cocktail>'
     });
 
     $urlRouterProvider.otherwise('/');
@@ -37815,8 +37892,18 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 module.exports = uiRouterSetup;
 
 /***/ }),
-/* 11 */,
-/* 12 */,
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n\t<h1>\n\t\t{{$ctrl.cocktail.name}}\n\t</h1>\n\t<h2>\n\t\t{{$ctrl.cocktail.preparation}}\n\t</h2>\n</div>\n";
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n  <a ui-sref=\"cocktailShow({cocktailId: cocktail._id})\">click to see this cocktail</a>\n</div>\n";
+
+/***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 

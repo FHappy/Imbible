@@ -3,9 +3,13 @@ uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function uiRouterSetup($stateProvider, $urlRouterProvider) {
     $stateProvider
-        .state('home', {
+        .state('list', {
             url: '/',
-            template: ''
+            template: '<cocktails-list></cocktails-list>'
+        })
+        .state('cocktailShow', {
+        	url: '/show/:cocktailId',
+        	template: '<cocktail></cocktail>'
         });
 
     $urlRouterProvider.otherwise('/');
