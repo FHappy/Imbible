@@ -9,6 +9,7 @@ function CocktailsService($http) {
 
     self.loadAll = loadAll;
     self.loadCocktail = loadCocktail;
+    self.search = search;
 
 
     function loadAll() {
@@ -16,8 +17,10 @@ function CocktailsService($http) {
     }
 
     function loadCocktail(cocktailId) {
-    	return $http.get('/api/cocktails/' + cocktailId);
+        return $http.get('/api/cocktails/' + cocktailId);
     }
 
-
+    function search(url) {
+        return $http.get('/api/cocktails/search/' + url);
+    }
 }
