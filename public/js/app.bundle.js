@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -123,6 +123,22 @@ module.exports = CocktailsListController;
 /* 2 */
 /***/ (function(module, exports) {
 
+CocktailsSearchController.$inject = ['CocktailsService', '$stateParams'];
+
+function CocktailsSearchController(CocktailsService, $stateParams) {
+    const vm = this;
+
+    activate();
+
+    function activate() {}
+}
+
+module.exports = CocktailsSearchController;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
 CocktailsFormController.$inject = ['CocktailsService', '$stateParams', '$scope', 'SearchFactory'];
 
 function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchFactory) {
@@ -164,21 +180,21 @@ function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchF
 module.exports = CocktailsFormController;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const angular = __webpack_require__(11);
-__webpack_require__(9);
-var uiRouterSetup = __webpack_require__(12);
+const angular = __webpack_require__(14);
+__webpack_require__(12);
+var uiRouterSetup = __webpack_require__(15);
 
 angular.module('imbibleApp', ['ui.router']).config(uiRouterSetup);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const controller = __webpack_require__(0);
-const template = __webpack_require__(13);
+const template = __webpack_require__(16);
 
 const cocktailShowComponent = {
 	controller: controller,
@@ -188,11 +204,11 @@ const cocktailShowComponent = {
 angular.module('imbibleApp').component('cocktail', cocktailShowComponent);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const controller = __webpack_require__(1);
-const template = __webpack_require__(14);
+const template = __webpack_require__(17);
 
 const CocktailsListComponent = {
     controller: controller,
@@ -202,11 +218,25 @@ const CocktailsListComponent = {
 angular.module('imbibleApp').component('cocktailsList', CocktailsListComponent);
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const controller = __webpack_require__(2);
-const template = __webpack_require__(15);
+const template = __webpack_require__(19);
+
+const CocktailsSearchComponent = {
+    controller: controller,
+    template: template
+};
+
+angular.module('imbibleApp').component('cocktailsSearch', CocktailsSearchComponent);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(3);
+const template = __webpack_require__(18);
 
 const CocktailsFormComponent = {
     controller: controller,
@@ -216,13 +246,43 @@ const CocktailsFormComponent = {
 angular.module('imbibleApp').component('cocktailsForm', CocktailsFormComponent);
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 8 */
+/* 10 */
+/***/ (function(module, exports) {
+
+function CocktailsSearchFactory() {
+
+    function setTerms(newTerms) {
+        this.terms = newTerms;
+    }
+
+    function setEitherResults(newEither) {
+        this.eitherResults = newEither;
+    }
+
+    function setAll(newAll) {
+        this.allResults = newAll;
+    }
+
+    return {
+        terms: [],
+        eitherResults: [],
+        allResults: [],
+        setTerms: setTerms,
+        setEitherResults: setEitherResults,
+        setAll: setAll
+    };
+}
+
+angular.module('imbibleApp').factory('SearchFactory', CocktailsSearchFactory);
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports) {
 
 angular.module('imbibleApp').service('CocktailsService', CocktailsService);
@@ -250,7 +310,7 @@ function CocktailsService($http) {
 }
 
 /***/ }),
-/* 9 */
+/* 12 */
 /***/ (function(module, exports) {
 
 /**
@@ -4939,7 +4999,7 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ }),
-/* 10 */
+/* 13 */
 /***/ (function(module, exports) {
 
 /**
@@ -38316,15 +38376,15 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 11 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(10);
+__webpack_require__(13);
 module.exports = angular;
 
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // basic routing example, might need to put back into the app.js file *shrug*
@@ -38348,36 +38408,45 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 module.exports = uiRouterSetup;
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkShow>\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t\t<ul>\n\t\t<img src=\"https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150\" alt=\"\">\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\tUnit: {{ingredient.unit}}\n\t\t\t\tAmount: {{ingredient.amount}}\n\t\t\t\tIngredient: {{ingredient.ingredient}}\n\t\t\t\t<span ng-if=\"ingredient.label\">Label: {{ingredient.label}}</span>\n\t\t\t</li>\n\n\t\t</ul>\n\t</div>\n</div>\n";
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n  <a ui-sref=\"show({cocktailId: cocktail._id})\">click to see this cocktail</a>\n</div>\n";
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = "<div>\n\t<h2>Search</h2>\n\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t<label for=\"search\"></label>\n\t\t<input type=\"text\" ng-model=\"newSearchTerm\">\n\t</form>\n</div>\n";
 
 /***/ }),
-/* 16 */
+/* 19 */
+/***/ (function(module, exports) {
+
+module.exports = "<cocktails-form></cocktails-form>\n";
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(3);
 __webpack_require__(4);
-__webpack_require__(0);
 __webpack_require__(5);
-__webpack_require__(1);
+__webpack_require__(0);
 __webpack_require__(6);
-__webpack_require__(2);
+__webpack_require__(1);
 __webpack_require__(7);
-module.exports = __webpack_require__(8);
+__webpack_require__(2);
+__webpack_require__(8);
+__webpack_require__(3);
+__webpack_require__(9);
+__webpack_require__(10);
+module.exports = __webpack_require__(11);
 
 
 /***/ })
