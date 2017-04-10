@@ -37942,7 +37942,7 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         url: '/',
         template: '<cocktails-list></cocktails-list>'
     }).state('show', {
-        url: 'cocktails/show/:cocktailId',
+        url: '/cocktails/show/:cocktailId',
         template: '<cocktail></cocktail>'
     }).state('search', {
         url: '/cocktails/search',
@@ -37958,7 +37958,7 @@ module.exports = uiRouterSetup;
 /* 15 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkShow>\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t\t<ul>\n\t\t<img src=\"https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150\" alt=\"\">\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<!-- <li>{{$ctrl.cocktail.ingredients}}</li> -->\n\n\t\t</ul>\n\t</div>\n</div>\n\n";
+module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkShow>\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t\t<ul>\n\t\t<img src=\"https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150\" alt=\"\">\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\tUnit: {{ingredient.unit}}\n\t\t\t\tAmount: {{ingredient.amount}}\n\t\t\t\tIngredient: {{ingredient.ingredient}}\n\t\t\t\t<span ng-if=\"ingredient.label\">Label: {{ingredient.label}}</span>\n\t\t\t</li>\n\n\t\t</ul>\n\t</div>\n</div>\n";
 
 /***/ }),
 /* 16 */
