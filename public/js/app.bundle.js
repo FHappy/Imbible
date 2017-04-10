@@ -38316,6 +38316,9 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
     }).state('cocktailShow', {
         url: '/show/:cocktailId',
         template: '<cocktail></cocktail>'
+    }).state('cocktailForm', {
+        url: '/cocktail/search',
+        template: '<cocktail-form></cocktails-form>'
     });
 
     $urlRouterProvider.otherwise('/');
@@ -38327,7 +38330,7 @@ module.exports = uiRouterSetup;
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar-default\">\n\t<h1>\n\t\t{{$ctrl.cocktail.name}}\n\t</h1>\n</div>\n\n<div>\n\t<h2>\n\t\t{{$ctrl.cocktail.preparation}}\n\t</h2>\n</div>\n\n";
+module.exports = "\n<div class=\"container-fluid\">\n\t<h1>\n\t\t{{$ctrl.cocktail.name}}\n\t</h1>\n\t<hr>\n\t<ul>\n\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\t\t<li>{{$ctrl.cocktail.ingredients}}</li>\n\t</ul>\n</div>\n\n";
 
 /***/ }),
 /* 14 */
@@ -38339,7 +38342,7 @@ module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {
 /* 15 */
 /***/ (function(module, exports) {
 
-module.exports = "";
+module.exports = "<div>\n\t<h2>Search</h2>\n\t<form ng-submit=\"\">\n\t\t\n\t</form>\n</div>";
 
 /***/ }),
 /* 16 */

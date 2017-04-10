@@ -1,3 +1,10 @@
 body {
 	margin: 0 auto;
+	background-color: lightgrey;
 }
+
+.navbar {
+	padding: 10px 50px 10px 50px;
+	text-align: center;
+}
+
