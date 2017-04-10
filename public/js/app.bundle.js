@@ -63,21 +63,57 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktail.show/cocktails.show.controller.js'");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktails.list/cocktails.list.controller.js'");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const angular = __webpack_require__(3);
-__webpack_require__(1);
-var uiRouterSetup = __webpack_require__(4);
+const angular = __webpack_require__(9);
+__webpack_require__(7);
+var uiRouterSetup = __webpack_require__(10);
 
 angular.module('imbibleApp', ['ui.router']).config(uiRouterSetup);
 
 /***/ }),
-/* 1 */
+/* 3 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktail.show/cocktails.show.component.js'");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/components/cocktails/cocktails.list/cocktails.list.component.js'");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/HassanMasroor/dev/ga/wdi/projects/project-3/client/services/cocktails.service.js'");
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 /**
@@ -4766,7 +4802,7 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ }),
-/* 2 */
+/* 8 */
 /***/ (function(module, exports) {
 
 /**
@@ -37753,15 +37789,15 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 3 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
+__webpack_require__(8);
 module.exports = angular;
 
 
 /***/ }),
-/* 4 */
+/* 10 */
 /***/ (function(module, exports) {
 
 // basic routing example, might need to put back into the app.js file *shrug*
@@ -37779,10 +37815,18 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 module.exports = uiRouterSetup;
 
 /***/ }),
-/* 5 */
+/* 11 */,
+/* 12 */,
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(0);
+__webpack_require__(2);
+__webpack_require__(3);
+__webpack_require__(0);
+__webpack_require__(4);
+__webpack_require__(1);
+__webpack_require__(5);
+module.exports = __webpack_require__(6);
 
 
 /***/ })
