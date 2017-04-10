@@ -11,9 +11,13 @@
 			<!-- ingredients -->
 			<li>{{$ctrl.cocktail.preparation}}</li>
 
-			<!-- <li>{{$ctrl.cocktail.ingredients}}</li> -->
+			<li ng-repeat="ingredient in $ctrl.cocktail.ingredients">
+				Unit: {{ingredient.unit}}
+				Amount: {{ingredient.amount}}
+				Ingredient: {{ingredient.ingredient}}
+				<span ng-if="ingredient.label">Label: {{ingredient.label}}</span>
+			</li>
 
 		</ul>
 	</div>
 </div>
-
