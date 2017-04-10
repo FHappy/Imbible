@@ -1,3 +1,4 @@
 <div ng-repeat="cocktail in $ctrl.cocktails">
   <h3>Name: {{cocktail.name}}</h3>
+  <a ui-sref="cocktailShow({cocktailId: cocktail._id})">click to see this cocktail</a>
 </div>

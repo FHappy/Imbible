@@ -13,4 +13,8 @@ function CocktailsService($http) {
     function loadAll() {
         return $http.get('/api/cocktails');
     }
+
+    function loadCocktail(cocktailId) {
+    	return $http.get('/api/cocktails/' + cocktailId);
+    }
 }

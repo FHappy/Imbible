@@ -7,4 +7,7 @@ module.exports = function(app) {
 
   app.route('/api/cocktails')
      .get(cocktails.loadAll);
+
+  app.route('/api/cocktails/:cocktailId')
+  	 .get(cocktails.loadCocktail);
 }
