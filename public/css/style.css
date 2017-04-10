@@ -1,0 +1,15 @@
+body {
+	margin: 0 auto;
+	background-color: darkgrey;
+}
+
+.navbar {
+	padding: 10px 50px 10px 50px;
+	text-align: center;
+}
+
+.drinkShow {
+    max-width: 50%;
+    margin: 0px auto;
+    
+}

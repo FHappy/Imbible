@@ -10,6 +10,10 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         .state('cocktailShow', {
         	url: '/show/:cocktailId',
         	template: '<cocktail></cocktail>'
+        })
+        .state('cocktailForm', {
+            url: '/cocktail/search',
+            template: '<cocktail-form></cocktails-form>'
         });
 
     $urlRouterProvider.otherwise('/');

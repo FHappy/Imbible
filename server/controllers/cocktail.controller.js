@@ -18,3 +18,17 @@ exports.loadCocktail = function(req, res, next) {
 			res.json({cocktail: cocktail});
 		});
 }
+
+exports.searchCocktails = function (req, res, next) {
+
+  res.json({query1: req.query.query1,
+    query2: req.query.query2});
+
+  // var finalQuery = [];
+
+  // for (var i = 0; i < req.params.query.length; i++) {
+  //   var query = new RegExp(req.params.query[i], 'i');
+  //   finalQuery.push({ingredients.ingredient: query});
+  // }
+
+}

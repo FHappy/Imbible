@@ -18,4 +18,6 @@ function CocktailsService($http) {
     function loadCocktail(cocktailId) {
     	return $http.get('/api/cocktails/' + cocktailId);
     }
+
+
 }

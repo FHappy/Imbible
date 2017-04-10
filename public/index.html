@@ -4,15 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Test Page</title>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/app.bundle.js"></script>
 </head>
 
 <body ng-app="imbibleApp">
-    <h1>Test Page</h1>
-    <p>testing angular functinoality: {{2 + 2}}</p>
-    <a ui-sref="list">List Page</a>
-    <ui-view></ui-view>
-</body>
 
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="list">IMBIBLE</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="list">Show All</a></li>
+        <li><a ui-sref="list">Signup</a></li>
+        <li><a ui-sref="list">Login </a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
+
+<div class="container-fluid">
+    <ui-view></ui-view>
+</div>
+
+</body>
 </html>
