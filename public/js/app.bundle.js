@@ -211,8 +211,8 @@ const controller = __webpack_require__(3);
 const template = __webpack_require__(17);
 
 const CocktailsFormComponent = {
-  controller: controller,
-  template: template
+    controller: controller,
+    template: template
 };
 
 angular.module('imbibleApp').component('cocktailsForm', CocktailsFormComponent);

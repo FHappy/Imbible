@@ -2,8 +2,8 @@ const controller 			= require('./cocktails.form.controller.js');
 const template 				= require('./cocktails.form.html');
 
 const CocktailsFormComponent = {
-	controller: controller,
-	template: template
+    controller: controller,
+    template: template
 };
 
 angular
