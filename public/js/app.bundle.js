@@ -123,14 +123,42 @@ module.exports = CocktailsListController;
 /* 2 */
 /***/ (function(module, exports) {
 
-CocktailsFormController.$inject = ['CocktailsService', '$stateParams'];
+CocktailsFormController.$inject = ['CocktailsService', '$stateParams', '$scope', 'SearchFactory'];
 
-function CocktailsFormController(CocktailsService, $stateParams) {
+function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchFactory) {
     const vm = this;
 
     vm.coctails = [];
-
+    vm.search = search;
     activate();
+
+    function activate() {
+        SearchFactory.terms = [];
+    };
+
+    function search(newSearchTerm) {
+        console.log('search term is ' + newSearchTerm);
+        SearchFactory.terms.push(newSearchTerm);
+        var allSearchTerms = SearchFactory.terms;
+        var searchUrl = '?';
+        for (var i = 0; i < allSearchTerms.length; i++) {
+            console.log('search i is ' + i);
+            searchUrl += 'q' + i + '=' + allSearchTerms[i];
+            if (i !== allSearchTerms.length - 1) {
+                searchUrl += '&';
+            }
+        }
+        CocktailsService.search(searchUrl).then(function resolve(response) {
+            // update factory values, so it will change other components
+            SearchFactory.eitherResults = response.data.orCocktails;
+            SearchFactory.allResults = response.data.andCocktails;
+            console.log(SearchFactory.terms);
+            console.log(SearchFactory.eitherResults);
+            console.log(SearchFactory.allResults);
+        }, function reject(response) {
+            return { message: 'No results found.' };
+        });
+    }
 }
 
 module.exports = CocktailsFormController;
@@ -144,18 +172,6 @@ __webpack_require__(9);
 var uiRouterSetup = __webpack_require__(12);
 
 angular.module('imbibleApp', ['ui.router']).config(uiRouterSetup);
-
-// uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
-//
-// function uiRouterSetup($stateProvider, $urlRouterProvider) {
-//     $stateProvider
-//         .state('list', {
-//             url: '/list',
-//             template: '<cocktails-list></cockatails-list>'
-//         });
-//
-//     $urlRouterProvider.otherwise('/');
-// }
 
 /***/ }),
 /* 4 */
@@ -193,8 +209,8 @@ const controller = __webpack_require__(2);
 const template = __webpack_require__(15);
 
 const CocktailsFormComponent = {
-  controller: controller,
-  template: template
+    controller: controller,
+    template: template
 };
 
 angular.module('imbibleApp').component('cocktailsForm', CocktailsFormComponent);
@@ -218,6 +234,7 @@ function CocktailsService($http) {
 
     self.loadAll = loadAll;
     self.loadCocktail = loadCocktail;
+    self.search = search;
 
     function loadAll() {
         return $http.get('/api/cocktails');
@@ -225,6 +242,10 @@ function CocktailsService($http) {
 
     function loadCocktail(cocktailId) {
         return $http.get('/api/cocktails/' + cocktailId);
+    }
+
+    function search(url) {
+        return $http.get('/api/cocktails/search/' + url);
     }
 }
 
@@ -38313,12 +38334,12 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
     $stateProvider.state('list', {
         url: '/',
         template: '<cocktails-list></cocktails-list>'
-    }).state('cocktailShow', {
-        url: '/show/:cocktailId',
+    }).state('show', {
+        url: '/cocktails/show/:cocktailId',
         template: '<cocktail></cocktail>'
-    }).state('cocktailForm', {
-        url: '/cocktail/search',
-        template: '<cocktail-form></cocktails-form>'
+    }).state('search', {
+        url: '/cocktails/search',
+        template: '<cocktails-search></cocktails-search>'
     });
 
     $urlRouterProvider.otherwise('/');
@@ -38330,19 +38351,19 @@ module.exports = uiRouterSetup;
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkShow>\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t\t<ul>\n\t\t<img src=\"https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150\" alt=\"\">\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<!-- <li>{{$ctrl.cocktail.ingredients}}</li> -->\n\n\t\t</ul>\n\t</div>\n</div>\n\n";
+module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkShow>\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t\t<ul>\n\t\t<img src=\"https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150\" alt=\"\">\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\tUnit: {{ingredient.unit}}\n\t\t\t\tAmount: {{ingredient.amount}}\n\t\t\t\tIngredient: {{ingredient.ingredient}}\n\t\t\t\t<span ng-if=\"ingredient.label\">Label: {{ingredient.label}}</span>\n\t\t\t</li>\n\n\t\t</ul>\n\t</div>\n</div>\n";
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n  <a ui-sref=\"cocktailShow({cocktailId: cocktail._id})\">click to see this cocktail</a>\n</div>\n";
+module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n  <a ui-sref=\"show({cocktailId: cocktail._id})\">click to see this cocktail</a>\n</div>\n";
 
 /***/ }),
 /* 15 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\t<h2>Search</h2>\n\t<form ng-submit=\"\">\n\t\t\n\t</form>\n</div>";
+module.exports = "<div>\n\t<h2>Search</h2>\n\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t<label for=\"search\"></label>\n\t\t<input type=\"text\" ng-model=\"newSearchTerm\">\n\t</form>\n</div>\n";
 
 /***/ }),
 /* 16 */

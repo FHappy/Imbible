@@ -13,10 +13,18 @@ body {
 }
 .drinkShow {
     max-width: 50%;
+<<<<<<< HEAD
     margin: 0px auto; 
+=======
+    margin: 0px auto;
+>>>>>>> bb0465888bdf75fd858c236eed5098e567282058
 }
 
 ul {
 	padding: 0px;
 	list-style: none;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bb0465888bdf75fd858c236eed5098e567282058
