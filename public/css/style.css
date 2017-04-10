@@ -1,6 +1,6 @@
 body {
 	margin: 0 auto;
-	background-color: lightgrey;
+	background-color: darkgrey;
 }
 
 .navbar {
@@ -8,3 +8,8 @@ body {
 	text-align: center;
 }
 
+.drinkShow {
+    max-width: 50%;
+    margin: 0px auto;
+    
+}

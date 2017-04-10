@@ -11,11 +11,23 @@
 
 <body ng-app="imbibleApp">
 
-	<div class="navbar navbar-default">
-		    <h1>IMBIBLE</h1>
-		    <!-- <p>testing angular functinoality: {{2 + 2}}</p> -->
-		    <a ui-sref="list">List Page</a>
-	</div>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="list">IMBIBLE</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="list">Show All</a></li>
+        <li><a ui-sref="list">Signup</a></li>
+        <li><a ui-sref="list">Login </a></li>
+    </ul>
+
+  </div>
+</nav>
+
+
 
 <div class="container-fluid">
     <ui-view></ui-view>

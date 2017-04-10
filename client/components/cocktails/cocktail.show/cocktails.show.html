@@ -1,12 +1,19 @@
 
 <div class="container-fluid">
-	<h1>
-		{{$ctrl.cocktail.name}}
-	</h1>
-	<hr>
-	<ul>
-		<li>{{$ctrl.cocktail.preparation}}</li>
-		<li>{{$ctrl.cocktail.ingredients}}</li>
-	</ul>
+	<div class=drinkShow>
+		<h1>
+			{{$ctrl.cocktail.name}}
+		</h1>
+		<hr>
+		<ul>
+		<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" alt="">
+			<li>{{$ctrl.cocktail.category}}</li>
+			<!-- ingredients -->
+			<li>{{$ctrl.cocktail.preparation}}</li>
+
+			<!-- <li>{{$ctrl.cocktail.ingredients}}</li> -->
+
+		</ul>
+	</div>
 </div>
 

@@ -38330,7 +38330,7 @@ module.exports = uiRouterSetup;
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid\">\n\t<h1>\n\t\t{{$ctrl.cocktail.name}}\n\t</h1>\n\t<hr>\n\t<ul>\n\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\t\t<li>{{$ctrl.cocktail.ingredients}}</li>\n\t</ul>\n</div>\n\n";
+module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkShow>\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t\t<ul>\n\t\t<img src=\"https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150\" alt=\"\">\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<!-- <li>{{$ctrl.cocktail.ingredients}}</li> -->\n\n\t\t</ul>\n\t</div>\n</div>\n\n";
 
 /***/ }),
 /* 14 */
