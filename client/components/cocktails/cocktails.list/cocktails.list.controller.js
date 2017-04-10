@@ -16,6 +16,7 @@ function CocktailsListController(CocktailsService, $stateParams) {
             .loadAll()
             .then(function resolve(response) {
                 vm.cocktails = response.data.cocktails;
+                console.log(vm.cocktails);
             });
     }
 }

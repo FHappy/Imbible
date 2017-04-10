@@ -86,6 +86,7 @@ function CocktailsListController(CocktailsService, $stateParams) {
     function loadAllCocktails() {
         CocktailsService.loadAll().then(function resolve(response) {
             vm.cocktails = response.data.cocktails;
+            console.log(vm.cocktails);
         });
     }
 }
@@ -102,16 +103,17 @@ var uiRouterSetup = __webpack_require__(8);
 
 angular.module('imbibleApp', ['ui.router']).config(uiRouterSetup);
 
-uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
-
-function uiRouterSetup($stateProvider, $urlRouterProvider) {
-    $stateProvider.state('home', {
-        url: '/',
-        template: '<cocktails-list></cockatails-list>'
-    });
-
-    $urlRouterProvider.otherwise('/');
-}
+// uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
+//
+// function uiRouterSetup($stateProvider, $urlRouterProvider) {
+//     $stateProvider
+//         .state('list', {
+//             url: '/list',
+//             template: '<cocktails-list></cockatails-list>'
+//         });
+//
+//     $urlRouterProvider.otherwise('/');
+// }
 
 /***/ }),
 /* 2 */
@@ -37843,9 +37845,9 @@ module.exports = angular;
 uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function uiRouterSetup($stateProvider, $urlRouterProvider) {
-    $stateProvider.state('home', {
+    $stateProvider.state('list', {
         url: '/',
-        template: ''
+        template: '<cocktails-list></cocktails-list>'
     });
 
     $urlRouterProvider.otherwise('/');
@@ -37857,7 +37859,7 @@ module.exports = uiRouterSetup;
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{name}}</h3>\n</div>\n";
+module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n</div>\n";
 
 /***/ }),
 /* 10 */

@@ -6,14 +6,14 @@ angular
     .module('imbibleApp', ['ui.router'])
     .config(uiRouterSetup);
 
-uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
-
-function uiRouterSetup($stateProvider, $urlRouterProvider) {
-    $stateProvider
-        .state('home', {
-            url: '/',
-            template: '<cocktails-list></cockatails-list>'
-        });
-
-    $urlRouterProvider.otherwise('/');
-}
+// uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
+//
+// function uiRouterSetup($stateProvider, $urlRouterProvider) {
+//     $stateProvider
+//         .state('list', {
+//             url: '/list',
+//             template: '<cocktails-list></cockatails-list>'
+//         });
+//
+//     $urlRouterProvider.otherwise('/');
+// }
