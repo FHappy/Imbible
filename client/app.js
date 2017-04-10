@@ -5,3 +5,15 @@ var uiRouterSetup = require('./../config/angular.js');
 angular
     .module('imbibleApp', ['ui.router'])
     .config(uiRouterSetup);
+
+uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+function uiRouterSetup($stateProvider, $urlRouterProvider) {
+    $stateProvider
+        .state('home', {
+            url: '/',
+            template: '<cocktails-list></cockatails-list>'
+        });
+
+    $urlRouterProvider.otherwise('/');
+}
