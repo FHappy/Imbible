@@ -5,6 +5,7 @@ function ReviewsEditController(CocktailsService, $stateParams) {
 	const vm = this;
 
 	vm.current = {};
+	vm.editCurrentReview = editCurrentReview;
 
 	activate();
 

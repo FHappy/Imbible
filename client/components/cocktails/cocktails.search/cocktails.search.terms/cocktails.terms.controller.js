@@ -1,6 +1,6 @@
-CocktailsSearchTermsController.$inject = ['SearchFactory', '$scope'];
+CocktailsSearchTermsController.$inject = ['SearchFactory', '$scope', 'CocktailsService'];
 
-function CocktailsSearchTermsController(SearchFactory, $scope) {
+function CocktailsSearchTermsController(SearchFactory, $scope, CocktailsService) {
     const vm = this;
 
     vm.terms = [];
@@ -20,8 +20,15 @@ function CocktailsSearchTermsController(SearchFactory, $scope) {
     });
 
     function removeTerm(term) {
-        vm.terms = vm.terms.filter(x => x!== term);
+        vm.terms = vm.terms.filter(x => x !== term);
         SearchFactory.setTerms(vm.terms);
+
+        var searchUrl = SearchFactory.generateUrl();
+        CocktailsService
+            .search(searchUrl)
+            .then(function resolve(response) {
+                SearchFactory.setResults(response.data.orCocktails, response.data.andCocktails);
+            });
     }
 
 }
