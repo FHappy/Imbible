@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 20);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -96,6 +96,33 @@ module.exports = CocktailsShowController;
 /* 1 */
 /***/ (function(module, exports) {
 
+CocktailsEditController.$inject = ['CocktailsService', '$stateParams'];
+
+function CocktailsEditController(CocktailsService, $stateParams) {
+
+	const vm = this;
+
+	vm.current = {};
+
+	activate();
+
+	function activate() {
+		editCurrentCocktail();
+	}
+
+	function editCurrentCocktail() {
+		CocktailsService.editCocktail($stateParams.cocktailId).then(function resolve(response) {
+			vm.current = response.data.cocktail;
+		});
+	}
+}
+
+module.exports = CocktailsEditController;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
 CocktailsListController.$inject = ['CocktailsService', '$stateParams'];
 
 function CocktailsListController(CocktailsService, $stateParams) {
@@ -120,7 +147,60 @@ function CocktailsListController(CocktailsService, $stateParams) {
 module.exports = CocktailsListController;
 
 /***/ }),
-/* 2 */
+/* 3 */
+/***/ (function(module, exports) {
+
+CocktailsNewController.$inject = ['CocktailsService', '$state'];
+
+function CocktailsNewController(CocktailsService, $state) {
+
+	const vm = this;
+
+	vm.addNewCocktail = addNewCocktail;
+	vm.newCocktail = {};
+
+	activate();
+
+	function activate() {};
+
+	function addNewCocktail() {
+		CocktailsService.addCocktail(vm.newCocktail).then(function resolve(response) {
+			vm.newCocktail = {};
+			$state.go('list');
+		});
+	}
+}
+
+module.exports = CocktailsNewController;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+CocktailsSearchAllController.$inject = ['SearchFactory', '$scope'];
+
+function CocktailsSearchAllController(SearchFactory, $scope) {
+    const vm = this;
+
+    vm.allResults = [];
+
+    activate();
+
+    function activate() {
+        vm.allResults = SearchFactory.allResults;
+    }
+
+    $scope.$watch(function () {
+        return SearchFactory.allResults;
+    }, function (newValue, oldValue) {
+        vm.allResults = newValue;
+    });
+}
+
+module.exports = CocktailsSearchAllController;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 CocktailsSearchController.$inject = ['CocktailsService', '$stateParams'];
@@ -136,7 +216,33 @@ function CocktailsSearchController(CocktailsService, $stateParams) {
 module.exports = CocktailsSearchController;
 
 /***/ }),
-/* 3 */
+/* 6 */
+/***/ (function(module, exports) {
+
+CocktailsSearchEitherController.$inject = ['SearchFactory', '$scope'];
+
+function CocktailsSearchEitherController(SearchFactory, $scope) {
+    const vm = this;
+
+    vm.eitherResults = [];
+
+    activate();
+
+    function activate() {
+        vm.eitherResults = SearchFactory.eitherResults;
+    }
+
+    $scope.$watch(function () {
+        return SearchFactory.eitherResults;
+    }, function (newValue, oldValue) {
+        vm.eitherResults = newValue;
+    });
+}
+
+module.exports = CocktailsSearchEitherController;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 CocktailsFormController.$inject = ['CocktailsService', '$stateParams', '$scope', 'SearchFactory'];
@@ -153,12 +259,10 @@ function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchF
     };
 
     function search(newSearchTerm) {
-        console.log('search term is ' + newSearchTerm);
         SearchFactory.terms.push(newSearchTerm);
         var allSearchTerms = SearchFactory.terms;
         var searchUrl = '?';
         for (var i = 0; i < allSearchTerms.length; i++) {
-            console.log('search i is ' + i);
             searchUrl += 'q' + i + '=' + allSearchTerms[i];
             if (i !== allSearchTerms.length - 1) {
                 searchUrl += '&';
@@ -168,9 +272,6 @@ function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchF
             // update factory values, so it will change other components
             SearchFactory.eitherResults = response.data.orCocktails;
             SearchFactory.allResults = response.data.andCocktails;
-            console.log(SearchFactory.terms);
-            console.log(SearchFactory.eitherResults);
-            console.log(SearchFactory.allResults);
         }, function reject(response) {
             return { message: 'No results found.' };
         });
@@ -180,21 +281,108 @@ function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchF
 module.exports = CocktailsFormController;
 
 /***/ }),
-/* 4 */
+/* 8 */
+/***/ (function(module, exports) {
+
+CocktailsSearchTermsController.$inject = ['SearchFactory', '$scope'];
+
+function CocktailsSearchTermsController(SearchFactory, $scope) {
+    const vm = this;
+
+    vm.terms = [];
+    vm.removeTerm = removeTerm;
+
+    activate();
+
+    function activate() {
+        vm.terms = SearchFactory.terms;
+    }
+
+    $scope.$watch(function () {
+        return SearchFactory.terms;
+    }, function (newValue, oldValue) {
+        // SearchFactory.setTerms(newValue);
+        vm.terms = SearchFactory.terms;
+    });
+
+    function removeTerm(term) {
+        vm.terms = vm.terms.filter(x => x !== term);
+        SearchFactory.setTerms(vm.terms);
+    }
+}
+
+module.exports = CocktailsSearchTermsController;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+ReviewsEditController.$inject = ['CocktailsService', '$stateParams'];
+
+function ReviewsEditController(CocktailsService, $stateParams) {
+
+	const vm = this;
+
+	vm.current = {};
+
+	activate();
+
+	function activate() {
+		editCurrentReview();
+	}
+
+	function editCurrentReview() {
+		CocktailsService.editReview($stateParams.reviewId).then(function resolve(response) {
+			vm.current = response.data.cocktail.review;
+		});
+	}
+}
+
+module.exports = ReviewsEditController;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+ReviewsNewController.$inject = ['CocktailsService', '$state'];
+
+function ReviewsNewController(CocktailsService, $state) {
+
+	const vm = this;
+
+	vm.addNewReview = addNewReview;
+	vm.newReview = {};
+
+	activate();
+
+	function activate() {};
+
+	function addNewReview() {
+		CocktailsService.addReview(vm.newReview).then(function resolve(response) {
+			vm.newReview = {};
+			$state.go('show');
+		});
+	}
+}
+
+module.exports = ReviewsNewController;
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const angular = __webpack_require__(14);
-__webpack_require__(12);
-var uiRouterSetup = __webpack_require__(15);
+const angular = __webpack_require__(28);
+__webpack_require__(26);
+var uiRouterSetup = __webpack_require__(29);
 
 angular.module('imbibleApp', ['ui.router']).config(uiRouterSetup);
 
 /***/ }),
-/* 5 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const controller = __webpack_require__(0);
-const template = __webpack_require__(16);
+const template = __webpack_require__(30);
 
 const cocktailShowComponent = {
 	controller: controller,
@@ -204,11 +392,25 @@ const cocktailShowComponent = {
 angular.module('imbibleApp').component('cocktail', cocktailShowComponent);
 
 /***/ }),
-/* 6 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const controller = __webpack_require__(1);
-const template = __webpack_require__(17);
+const template = __webpack_require__(31);
+
+const cocktailEditComponent = {
+	controller: controller,
+	template: template
+};
+
+angular.module('imbibleApp').component('cocktailsEdit', cocktailEditComponent);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(2);
+const template = __webpack_require__(32);
 
 const CocktailsListComponent = {
     controller: controller,
@@ -218,11 +420,39 @@ const CocktailsListComponent = {
 angular.module('imbibleApp').component('cocktailsList', CocktailsListComponent);
 
 /***/ }),
-/* 7 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const controller = __webpack_require__(2);
-const template = __webpack_require__(19);
+const controller = __webpack_require__(3);
+const template = __webpack_require__(33);
+
+const cocktailNewComponent = {
+	controller: controller,
+	template: template
+};
+
+angular.module('imbibleApp').component('cocktailsNew', cocktailNewComponent);
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(4);
+const template = __webpack_require__(34);
+
+const CocktailsAllComponent = {
+    controller: controller,
+    template: template
+};
+
+angular.module('imbibleApp').component('allResults', CocktailsAllComponent);
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(5);
+const template = __webpack_require__(37);
 
 const CocktailsSearchComponent = {
     controller: controller,
@@ -232,11 +462,25 @@ const CocktailsSearchComponent = {
 angular.module('imbibleApp').component('cocktailsSearch', CocktailsSearchComponent);
 
 /***/ }),
-/* 8 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const controller = __webpack_require__(3);
-const template = __webpack_require__(18);
+const controller = __webpack_require__(6);
+const template = __webpack_require__(35);
+
+const CocktailsEitherComponent = {
+    controller: controller,
+    template: template
+};
+
+angular.module('imbibleApp').component('eitherResults', CocktailsEitherComponent);
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(7);
+const template = __webpack_require__(36);
 
 const CocktailsFormComponent = {
     controller: controller,
@@ -246,13 +490,55 @@ const CocktailsFormComponent = {
 angular.module('imbibleApp').component('cocktailsForm', CocktailsFormComponent);
 
 /***/ }),
-/* 9 */
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(8);
+const template = __webpack_require__(38);
+
+const CocktailsSearchTermsComponent = {
+    controller: controller,
+    template: template
+};
+
+angular.module('imbibleApp').component('terms', CocktailsSearchTermsComponent);
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(9);
+const template = __webpack_require__(39);
+
+const reviewEditComponent = {
+	controller: controller,
+	template: template
+};
+
+angular.module('imbibleApp').component('reviewsEdit', reviewEditComponent);
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const controller = __webpack_require__(10);
+const template = __webpack_require__(40);
+
+const reviewNewComponent = {
+	controller: controller,
+	template: template
+};
+
+angular.module('imbibleApp').component('reviewsNew', reviewNewComponent);
+
+/***/ }),
+/* 23 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 10 */
+/* 24 */
 /***/ (function(module, exports) {
 
 function CocktailsSearchFactory() {
@@ -261,28 +547,18 @@ function CocktailsSearchFactory() {
         this.terms = newTerms;
     }
 
-    function setEitherResults(newEither) {
-        this.eitherResults = newEither;
-    }
-
-    function setAll(newAll) {
-        this.allResults = newAll;
-    }
-
     return {
         terms: [],
         eitherResults: [],
         allResults: [],
-        setTerms: setTerms,
-        setEitherResults: setEitherResults,
-        setAll: setAll
+        setTerms: setTerms
     };
 }
 
 angular.module('imbibleApp').factory('SearchFactory', CocktailsSearchFactory);
 
 /***/ }),
-/* 11 */
+/* 25 */
 /***/ (function(module, exports) {
 
 angular.module('imbibleApp').service('CocktailsService', CocktailsService);
@@ -310,7 +586,7 @@ function CocktailsService($http) {
 }
 
 /***/ }),
-/* 12 */
+/* 26 */
 /***/ (function(module, exports) {
 
 /**
@@ -4999,7 +5275,7 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ }),
-/* 13 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /**
@@ -38376,15 +38652,15 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 14 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(13);
+__webpack_require__(27);
 module.exports = angular;
 
 
 /***/ }),
-/* 15 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // basic routing example, might need to put back into the app.js file *shrug*
@@ -38408,45 +38684,101 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 module.exports = uiRouterSetup;
 
 /***/ }),
-/* 16 */
+/* 30 */
 /***/ (function(module, exports) {
 
-module.exports = "\t\t<h1 class=\"drinkName\">\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n<div class=\"container-fluid mainShow\">\n\n\t<div class=\"drinkShow\">\n\t\t<div class=\"liqourPicture\">\n\t\t\t<img class=\"img-circle\" src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n\t\t</div>\n\n\t\t<div class=\"containter liqourInfo\">\n\t\t\t<ul>\n\t\t\t<span class=\"liqourTitle\">Category: </span>\n\t\t\t\t<p>{{$ctrl.cocktail.category}}</p>\n\t\t\t\t<hr>\n\t\t\t\t<!-- ingredients -->\n\t\t\t\t<p>{{$ctrl.cocktail.preparation}}</p>\n\n\t\t\t\t<p ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t<span class=\"liqourTitle\">Amount: </span>\n\t\t\t\t\t\t{{ingredient.amount}}\n\t\t\t\t\t<span class=\"liqourTitle\"></span>\n\t\t\t\t\t\t{{ingredient.unit}}\n\t\t\t\t\t<span class=\"liqourTitle\"></span>\n\t\t\t\t\t\t{{ingredient.ingredient}}\n\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t<span class=\"liqourTitle\">Label: </span>\n\t\t\t\t\t\t{{ingredient.label}}\n\t\t\t\t\t</span>\n\t\t\t\t</p>\n\t\t\t</ul>\n\t\t</div>\n\n\t</div>\n</div>\n\n<!-- \t\t\t\t\t<span class=\"liqourTitle\">Amount: </span>\n\t\t\t\t\t\t{{ingredient.amount}}\n\t\t\t\t\t<span class=\"liqourTitle\">Unit: </span>\n\t\t\t\t\t\t{{ingredient.unit}}\n\t\t\t\t\t<span class=\"liqourTitle\">Ingredient: </span>\n\t\t\t\t\t\t{{ingredient.ingredient}}\n\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t<span class=\"liqourTitle\">Label: </span>\n\t\t\t\t\t\t{{ingredient.label}}\n\t\t\t\t\t</span> -->";
+module.exports = "<<<<<<< HEAD\n\t\t<h1 class=\"drinkName\">\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n<div class=\"container-fluid mainShow\">\n\n\t<div class=\"drinkShow\">\n\t\t<div class=\"liqourPicture\">\n\t\t\t<img class=\"img-circle\" src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n\t\t</div>\n\n\t\t<div class=\"containter liqourInfo\">\n\t\t\t<ul>\n\t\t\t<span class=\"liqourTitle\">Category: </span>\n\t\t\t\t<p>{{$ctrl.cocktail.category}}</p>\n\t\t\t\t<hr>\n\t\t\t\t<!-- ingredients -->\n\t\t\t\t<p>{{$ctrl.cocktail.preparation}}</p>\n\n\t\t\t\t<p ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t<span class=\"liqourTitle\">Amount: </span>\n\t\t\t\t\t\t{{ingredient.amount}}\n\t\t\t\t\t<span class=\"liqourTitle\"></span>\n\t\t\t\t\t\t{{ingredient.unit}}\n\t\t\t\t\t<span class=\"liqourTitle\"></span>\n\t\t\t\t\t\t{{ingredient.ingredient}}\n\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t<span class=\"liqourTitle\">Label: </span>\n\t\t\t\t\t\t{{ingredient.label}}\n\t\t\t\t\t</span>\n\t\t\t\t</p>\n\t\t\t</ul>\n\t\t</div>\n\n\t</div>\n</div>\n\n<!-- \t\t\t\t\t<span class=\"liqourTitle\">Amount: </span>\n\t\t\t\t\t\t{{ingredient.amount}}\n\t\t\t\t\t<span class=\"liqourTitle\">Unit: </span>\n\t\t\t\t\t\t{{ingredient.unit}}\n\t\t\t\t\t<span class=\"liqourTitle\">Ingredient: </span>\n\t\t\t\t\t\t{{ingredient.ingredient}}\n\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t<span class=\"liqourTitle\">Label: </span>\n\t\t\t\t\t\t{{ingredient.label}}\n\t\t\t\t\t</span> -->\n=======\n<h1 class=\"drinkName\">\n\t\t\t\t\t {{$ctrl.cocktail.name}}\n\t\t\t </h1>\n\t\t\t <hr>\n<div class=\"container-fluid mainShow\">\n\n\t <div class=\"drinkShow\">\n\t\t\t <div class=\"liqourPicture\">\n\t\t\t\t\t <img class=\"img-circle\" src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n\t\t\t </div>\n\n\t\t\t <div class=\"containter liqourInfo\">\n\t\t\t\t\t <ul>\n\t\t\t\t\t <span class=\"liqourTitle\">Category: </span>\n\t\t\t\t\t\t\t <p>{{$ctrl.cocktail.category}}</p>\n\t\t\t\t\t\t\t <hr>\n\t\t\t\t\t\t\t <!-- ingredients -->\n\t\t\t\t\t\t\t <p>{{$ctrl.cocktail.preparation}}</p>\n\n\t\t\t\t\t\t\t <p ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t\t\t\t\t <span class=\"liqourTitle\">Amount: </span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.amount}}\n\t\t\t\t\t\t\t\t\t <span class=\"liqourTitle\"></span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.unit}}\n\t\t\t\t\t\t\t\t\t <span class=\"liqourTitle\"></span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.ingredient}}\n\t\t\t\t\t\t\t\t\t <span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t\t\t <span class=\"liqourTitle\">Label: </span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.label}}\n\t\t\t\t\t\t\t\t\t </span>\n\t\t\t\t\t\t\t </p>\n\t\t\t\t\t </ul>\n\t\t\t </div>\n\n\t </div>\n</div>\n\n<!--                     <span class=\"liqourTitle\">Amount: </span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.amount}}\n\t\t\t\t\t\t\t\t\t <span class=\"liqourTitle\">Unit: </span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.unit}}\n\t\t\t\t\t\t\t\t\t <span class=\"liqourTitle\">Ingredient: </span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.ingredient}}\n\t\t\t\t\t\t\t\t\t <span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t\t\t <span class=\"liqourTitle\">Label: </span>\n\t\t\t\t\t\t\t\t\t\t\t {{ingredient.label}}\n\t\t\t\t\t\t\t\t\t </span> -->\n>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c\n";
 
 /***/ }),
-/* 17 */
+/* 31 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"everyDrink\">\n\t<ul class=\"homeList\" ng-repeat=\"cocktail in $ctrl.cocktails\">\n\t\t<li>\n\t\t\t<a ui-sref=\"show({cocktailId: cocktail._id})\" class=\"thumbnail\">\n\t\t\t\t<img class=\"img-rounded liquorPicture\" src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n\t\t\t\t<h3 class=\"drinkText\">\n\t\t\t\t\t{{cocktail.name}}\n\t\t\t\t\t<span class=\"glyphicon glyphicon-circle-arrow-right\"></span>\n\t\t\t\t</h3>\n\t\t\t</a>\n\t\t</li>\n\t</ul>\n</div>\n\n\n";
+module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkEdit>\n\t\t<form ng-submit=\"$ctrl.editCurrentCocktail()\" id=\"editCocktail\">\n\t\t\t<h1>\n\t\t\t\t<label for=\"editCocktail-name\">Name: {{$ctrl.cocktail.name}}</label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.name\" name=\"\">\n\t\t\t</h1>\n\t\t\t<hr>\n\t\t\t<img src=\"xxxHTMLLINKxxx0.117348429937333520.5432667210437825xxx\" alt=\"\">\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"editCocktail-category\">Category: {{$ctrl.cocktail.category}}</label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.category\" name=\"\">\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"editCocktail-preparation\">Preparation: {{$ctrl.cocktail.preparation}}</label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.preparation\" name=\"\">\n\t\t\t\t</div>\n\t\t\t\t<ul>\n\t\t\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-amount\">Amount: {{ingredient.amount}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.amount\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-unit\">Unit: {{ingredient.unit}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.unit\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-ingredient\">Ingredient: {{ingredient.ingredient}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.ingredient\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<label for=\"editCocktail-label\">Label: {{ingredient.label}}</label>\n\t\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.label\" name=\"\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t<div>\n\t\t\t\t<input type=\"submit\" value=\"Edit Cocktail\" name=\"\">\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>";
 
 /***/ }),
-/* 18 */
+/* 32 */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <div class=\"\">\n\t<h2>Search</h2>\n\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t<label for=\"search\"></label>\n\t\t<input type=\"text\" ng-model=\"newSearchTerm\">\n\t</form>\n</div>\n-->\n\n\n<div class=\"container cocktailsSearch\">\n\n        <div class=\"col-xs-2 searchFormContainer\">\n\t\t<h2>Search</h2>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t\t\t\t<label for=\"search\"></label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"newSearchTerm\" placeholder=\"\" class=\"form-control\">\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t\t<hr>\n        </div>\n\t\t\n        <div class=\"col-xs-10 searchResultContainer\">\n\t\t\t<h1>SEARCH RESULTS HERE</h1>\n        \t<p>\n\t\t\t\tLorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt doloribus officia sapiente fugiat dicta deleniti soluta fuga nihil quisquam cum, rerum, maiores facere harum voluptas, nobis iusto debitis. Rerum, quam?\n\t\t\t</p>\n        </div>\n\n</div>\n";
+module.exports = "<div class=\"everyDrink\">\n<<<<<<< HEAD\n\t<ul class=\"homeList\" ng-repeat=\"cocktail in $ctrl.cocktails\">\n\t\t<li>\n\t\t\t<a ui-sref=\"show({cocktailId: cocktail._id})\" class=\"thumbnail\">\n\t\t\t\t<img class=\"img-rounded liquorPicture\" src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n\t\t\t\t<h3 class=\"drinkText\">\n\t\t\t\t\t{{cocktail.name}}\n\t\t\t\t\t<span class=\"glyphicon glyphicon-circle-arrow-right\"></span>\n\t\t\t\t</h3>\n\t\t\t</a>\n\t\t</li>\n\t</ul>\n=======\n    <ul class=\"homeList\" ng-repeat=\"cocktail in $ctrl.cocktails\">\n        <li>\n            <a ui-sref=\"show({cocktailId: cocktail._id})\" class=\"thumbnail\">\n                <img class=\"img-rounded liquorPicture\" src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n                <h3 class=\"drinkText\">\n                    {{cocktail.name}}\n                    <span class=\"glyphicon glyphicon-circle-arrow-right\"></span>\n                </h3>\n            </a>\n        </li>\n    </ul>\n>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c\n</div>\n\n\n";
 
 /***/ }),
-/* 19 */
+/* 33 */
 /***/ (function(module, exports) {
 
-module.exports = "<cocktails-form>\n</cocktails-form>\n";
+module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkAdd>\n\t\t<form ng-submit=\"$ctrl.addNewCocktail()\" id=\"newCocktail\">\n\t\t\t<div>\n\t\t\t\t<label for=\"newCocktail-createdBy\">Created By: </label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.createdBy\" placeholder=\"Username\">\n\t\t\t</div>\n\t\t\t<h1>\n\t\t\t\t<label for=\"newCocktail-name\">Name: </label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.name\" placeholder=\"Name\">\n\t\t\t</h1>\n\t\t\t<hr>\n\t\t\t<img src=\"xxxHTMLLINKxxx0.185712948951694660.25882502219029635xxx\" alt=\"\">\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"newCocktail-category\">Category: </label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.category\" placeholder=\"Category\">\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"newCocktail-preparation\">Preparation: </label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.preparation\" placeholder=\"Preparation\">\n\t\t\t\t</div>\n\t\t\t\t<h3>Ingredients:</h3>\n\t\t\t\t<ul>\n\t\t\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-amount\">Amount: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.amount\" placeholder=\"Amount\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-unit\">Unit: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.unit\" placeholder=\"Unit\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-ingredient\">Ingredient: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.ingredient\" placeholder=\"Ingredient\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<label for=\"newCocktail-label\">Label: </label>\n\t\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.label\" placeholder=\"Brand Name or Sub-group of Ingredient\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t<div>\n\t\t\t\t<input type=\"submit\" value=\"New Cocktail\" name=\"\">\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>";
 
 /***/ }),
-/* 20 */
+/* 34 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <h2>'All' Results</h2>\n  <ul>\n    <li ng-repeat=\"result in $ctrl.allResults\">\n      {{result.name}}\n    </li>\n  </ul>\n</div>\n";
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <h2>'Either' Results</h2>\n  <ul>\n    <li ng-repeat=\"result in $ctrl.eitherResults\">\n      {{result.name}}\n    </li>\n  </ul>\n</div>\n";
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <div class=\"\">\n<<<<<<< HEAD\n\t<h2>Search</h2>\n\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t<label for=\"search\"></label>\n\t\t<input type=\"text\" ng-model=\"newSearchTerm\">\n\t</form>\n=======\n    <h2>Search</h2>\n    <form ng-submit=\"$ctrl.search(newSearchTerm)\">\n        <label for=\"search\"></label>\n        <input type=\"text\" ng-model=\"newSearchTerm\">\n    </form>\n</div>\n-->\n\n\n<div class=\"container cocktailsSearch\">\n\n        <div class=\"col-xs-2 searchFormContainer\">\n        <h2>Search</h2>\n            <div class=\"form-group\">\n                <form ng-submit=\"$ctrl.search(newSearchTerm)\">\n                    <label for=\"search\"></label>\n                    <input type=\"text\" ng-model=\"newSearchTerm\" placeholder=\"\" class=\"form-control\">\n                </form>\n            </div>\n            <hr>\n        </div>\n\n        <div class=\"col-xs-10 searchResultContainer\">\n            <h1>SEARCH RESULTS HERE</h1>\n            <p>\n                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt doloribus officia sapiente fugiat dicta deleniti soluta fuga nihil quisquam cum, rerum, maiores facere harum voluptas, nobis iusto debitis. Rerum, quam?\n            </p>\n        </div>\n\n>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c\n</div>\n-->\n\n\n<div class=\"container cocktailsSearch\">\n\n        <div class=\"col-xs-2 searchFormContainer\">\n\t\t<h2>Search</h2>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t\t\t\t<label for=\"search\"></label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"newSearchTerm\" placeholder=\"\" class=\"form-control\">\n\t\t\t\t</form>\n\t\t\t</div>\n\t\t\t<hr>\n        </div>\n\t\t\n        <div class=\"col-xs-10 searchResultContainer\">\n\t\t\t<h1>SEARCH RESULTS HERE</h1>\n        \t<p>\n\t\t\t\tLorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt doloribus officia sapiente fugiat dicta deleniti soluta fuga nihil quisquam cum, rerum, maiores facere harum voluptas, nobis iusto debitis. Rerum, quam?\n\t\t\t</p>\n        </div>\n\n</div>\n";
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+module.exports = "<<<<<<< HEAD\n<cocktails-form>\n</cocktails-form>\n=======\n<cocktails-form></cocktails-form>\n\n<terms></terms>\n\n<either-results></either-results>\n\n<all-results></all-results>\n>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c\n";
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\n  <ul>\n    <li ng-repeat=\"term in $ctrl.terms\">\n      <p>{{term}}</p>\n      <button ng-click=\"$ctrl.removeTerm(term)\">x</button>\n    </li>\n  </ul>\n</div>\n";
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+module.exports = "<form ng-submit=\"$ctrl.editCurrentReview()\" id=\"editReview\">\n\t<div>\n\t\t<label for=\"editReview-reviewer\">Reviewer: {{$ctrl.review.reviewer}</label>\n\t\t<input type=\"text\" ng-model=\"$ctrl.editReview.reviewer\" name=\"\">\n\t</div>\t\n\t<div>\n\t\t<label for=\"editReview-rating\">Rating: {{$ctrl.review.rating}}</label>\n\t\t<input type=\"number\" ng-model=\"$ctrl.editReview.rating\" name=\"\">\n\t</div>\n\t<div>\n\t\t<input type=\"submit\" value=\"Edit Review\" name=\"\">\n\t</div>\n</form>";
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+module.exports = "<form ng-submit=\"$ctrl.addNewReview()\" id=\"addReview\">\n\t<div>\n\t\t<label for=\"addReview-reviewer\">Reviewer: </label>\n\t\t<input type=\"text\" ng-model=\"$ctrl.addReview.reviewer\" placeholder=\"Reviewer\">\n\t</div>\t\n\t<div>\n\t\t<label for=\"addReview-rating\">Rating: </label>\n\t\t<input type=\"number\" ng-model=\"$ctrl.addReview.rating\" placeholder=\"Rating From 1 to 5\">\n\t</div>\n\t<div>\n\t\t<input type=\"submit\" value=\"New Review\" name=\"\">\n\t</div>\n</form>";
+
+/***/ }),
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(4);
-__webpack_require__(5);
+__webpack_require__(11);
+__webpack_require__(12);
 __webpack_require__(0);
-__webpack_require__(6);
+__webpack_require__(13);
 __webpack_require__(1);
-__webpack_require__(7);
+__webpack_require__(14);
 __webpack_require__(2);
-__webpack_require__(8);
+__webpack_require__(15);
 __webpack_require__(3);
+__webpack_require__(16);
+__webpack_require__(4);
+__webpack_require__(17);
+__webpack_require__(5);
+__webpack_require__(18);
+__webpack_require__(6);
+__webpack_require__(19);
+__webpack_require__(7);
+__webpack_require__(20);
+__webpack_require__(8);
+__webpack_require__(21);
 __webpack_require__(9);
+__webpack_require__(22);
 __webpack_require__(10);
-module.exports = __webpack_require__(11);
+__webpack_require__(23);
+__webpack_require__(24);
+module.exports = __webpack_require__(25);
 
 
 /***/ })
