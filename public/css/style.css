@@ -58,10 +58,41 @@ p {
 	padding: 10px;
 }
 
+.searchFormContainer {
+
+	padding: 25px;
+}
+
+.searchResultContainer {
+	color: white;
+	border: 3px dotted white;
+	padding: 25px;
+}
+
+.cocktailsSearch {
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+}
 
 
 @media (max-width: 790px) {
 	.drinkShow {
 		flex-direction: column;
+	}
+	.cocktailsSearch {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 1200px) {
+	.cocktailsSearch {
+		flex-direction: column;
+	}
+	.searchFormContainer {
+		width: 100vw;
+	}
+	.searchResultContainer {
+		width: 100vw;
 	}
 }

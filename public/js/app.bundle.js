@@ -38423,13 +38423,13 @@ module.exports = "<div class=\"homeList\" ng-repeat=\"cocktail in $ctrl.cocktail
 /* 18 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n\t<h2>Search</h2>\n\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t<label for=\"search\"></label>\n\t\t<input type=\"text\" ng-model=\"newSearchTerm\">\n\t</form>\n</div>\n";
+module.exports = "<!-- <div class=\"\">\n\t<h2>Search</h2>\n\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t<label for=\"search\"></label>\n\t\t<input type=\"text\" ng-model=\"newSearchTerm\">\n\t</form>\n</div>\n-->\n\n\n<div class=\"container cocktailsSearch\">\n\n        <div class=\"col-xs-2 searchFormContainer\">\n\t\t<h2>Search</h2>\n\t\t\t<form ng-submit=\"$ctrl.search(newSearchTerm)\">\n\t\t\t\t<label for=\"search\"></label>\n\t\t\t\t<input type=\"text\" ng-model=\"newSearchTerm\">\n\t\t\t</form>\n\n        </div>\n\n        <div class=\"col-xs-10 searchResultContainer\">\n\t\t\t<h1>SEARCH RESULTS HERE</h1>\n        \t<p>\n\t\t\t\tLorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt doloribus officia sapiente fugiat dicta deleniti soluta fuga nihil quisquam cum, rerum, maiores facere harum voluptas, nobis iusto debitis. Rerum, quam?\n\t\t\t</p>\n        </div>\n\n</div>\n";
 
 /***/ }),
 /* 19 */
 /***/ (function(module, exports) {
 
-module.exports = "<cocktails-form></cocktails-form>\n";
+module.exports = "<cocktails-form>\n</cocktails-form>\n";
 
 /***/ }),
 /* 20 */
