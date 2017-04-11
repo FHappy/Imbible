@@ -9,6 +9,19 @@ function CocktailsSearchFactory() {
     function generateUrl() {
         var allSearchTerms = this.terms;
         var searchUrl = '?';
+        if (allSearchTerms.length === 0) {
+          searchUrl = '';
+        }
+        // var params = [];
+        // allSearchTerms.forEach(function iterateOver(term, index) {
+        //     // var newParam = {};
+        //     // var key = 'q' + index;
+        //     // newParam[key] = term;
+        //     // params.push(newParam);
+        //     params.push(term);
+        // });
+        // console.log(params);
+        // return params;
         for (var i = 0; i < allSearchTerms.length; i++) {
             searchUrl += 'q' + i + '=' + allSearchTerms[i];
             if (i !== allSearchTerms.length - 1) {

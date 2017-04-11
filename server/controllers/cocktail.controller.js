@@ -27,9 +27,18 @@ exports.loadCocktail = function(req, res, next) {
 
 exports.searchCocktails = function(req, res, next) {
     var queryArray = [];
+    console.log('req.query is ');
+    console.log(req.query);
+    console.log('req.params.query is ');
+    console.log(req.params.query);
+    console.log('req.params is');
+    console.log(req.params);
     for (x in req.query) {
         queryArray.push(req.query[x]);
     }
+    // for (term of req.query) {
+    //     queryArray.push(term)
+    // }
 
     // res.json({queries: queryArray});
     var finalQuery = [];
