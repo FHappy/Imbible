@@ -41,7 +41,7 @@ a:hover {
 .everyDrink {
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: center;
 }
 
 
@@ -78,7 +78,7 @@ a:hover {
 }
 
 .homeList {
-    width: 50%;
+    width: 30%;
 }
 /*END HOVER EFFECT*/
 
