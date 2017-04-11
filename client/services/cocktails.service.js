@@ -7,10 +7,16 @@ CocktailsService.$inject = ['$http'];
 function CocktailsService($http) {
     const self = this;
 
+    self.editCocktail = editCocktail;
     self.loadAll = loadAll;
     self.loadCocktail = loadCocktail;
+    self.addCocktail = addCocktail;
     self.search = search;
 
+
+    function editCocktail(cocktailId) {
+        return $http.patch('/api/cocktails/' + cocktailId);
+    }
 
     function loadAll() {
         return $http.get('/api/cocktails');
@@ -18,6 +24,10 @@ function CocktailsService($http) {
 
     function loadCocktail(cocktailId) {
         return $http.get('/api/cocktails/' + cocktailId);
+    }
+
+    function addCocktail() {
+        return $http.post('/api/cocktails/new');
     }
 
     function search(url) {
