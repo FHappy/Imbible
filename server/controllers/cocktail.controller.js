@@ -96,17 +96,17 @@ exports.searchCocktails = function(req, res, next) {
 };
 
 exports.addImages = function (req, res, next) {
-  var imageLinks = [];
   for (image of cocktailImagesArray) {
     var cocktailName = Object.keys(image)[0];
     // console.log(cocktailName);
-    Cocktail.find({name: cocktailName})
-      .exec(function (err, cocktail) {
-        if (err) {console.log('no cocktail found for entry with name ' + cocktailName);}
-        console.log('cocktail found apparently');
-        console.log(cocktail);
-        imageLinks.push(cocktail);
-      });
+    Cocktail.findOneAndUpdate({name: cocktailName}, {$set: {img: image[cocktailName]}}, function(err, cocktail) {
+      if (err) {console.log('no cocktail found for entry with name ' + cocktailName);}
+
+    });
+        // cocktail.img = image[cocktailName];
+        // cocktail.save(function(err) {
+        //   if (err) {console.log('error during img save');}
+        // });
   }
-  res.json({foundCocktails: imageLinks})
+  res.json({foundCocktails: 'slkfjsljf'})
 };
