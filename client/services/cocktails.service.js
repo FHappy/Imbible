@@ -14,8 +14,9 @@ function CocktailsService($http) {
     self.search = search;
 
 
-    function editCocktail(cocktailId) {
-        return $http.patch('/api/cocktails/' + cocktailId);
+    function editCocktail(cocktail) {
+        console.log(cocktail);
+        return $http.patch('/api/cocktails/' + cocktail._id, cocktail);
     }
 
     function loadAll() {

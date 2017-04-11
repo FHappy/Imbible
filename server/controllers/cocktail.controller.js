@@ -39,26 +39,29 @@ exports.addCocktail = function(req, res, next) {
 exports.editCocktail = function(req, res, next) {
 
     var id = req.params.cocktailId;
+    console.log('reached patch method');
+    console.log(id);
 
-    Cocktail.findById({_id: id}), function(err, cocktail) {
+    Cocktail.findById({_id: id}, function(err, cocktail) {
         if (err) {res.json({message: 'Could not find that cocktail : ' + err})};
-
-        if(req.body.name) cocktail.createdBy = req.body.createdBy;
-        if(req.body.location) cocktail.name = req.body.name;
-        if(req.body.preparation) cocktail.preparation = req.body.preparation;
-        if(req.body.category) cocktail.category = req.body.category;
-        if(req.body.glass) cocktail.glass = req.body.glass;
-        if(req.body.garnish) cocktail.garnish = req.body.garnish;
-        if(req.body.ingredients) cocktail.ingredients = req.body.ingredients;
-        if(req.body.reviews) cocktail.reviews = req.body.reviews;
-        if(req.body.img) cocktail.img = req.body.img;
+        console.log('inside patch method, attempting to find cocktail');
+        console.log(cocktail);
+        if (req.body.createdBy) cocktail.createdBy = req.body.createdBy;
+        if (req.body.name) cocktail.name = req.body.name;
+        if (req.body.preparation) cocktail.preparation = req.body.preparation;
+        if (req.body.category) cocktail.category = req.body.category;
+        if (req.body.glass) cocktail.glass = req.body.glass;
+        if (req.body.garnish) cocktail.garnish = req.body.garnish;
+        if (req.body.ingredients) cocktail.ingredients = req.body.ingredients;
+        if (req.body.reviews) cocktail.reviews = req.body.reviews;
+        if (req.body.img) cocktail.img = req.body.img;
 
         cocktail.save(function(err) {
             if(err) res.json({messsage: 'Could not update cocktail b/c:' + err});
 
-            res.json({message: 'Cocktail successfully updated', cocktail: cocktail});
+            res.json({message: 'Cocktail successfully updated'});
         });
-    };
+    });
 
 }
 
@@ -67,7 +70,7 @@ exports.searchCocktails = function(req, res, next) {
     for (x in req.query) {
         queryArray.push(req.query[x]);
     }
-    
+
     var finalQuery = [];
 
     for (var i = 0; i < queryArray.length; i++) {
