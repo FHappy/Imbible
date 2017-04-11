@@ -1,40 +1,15 @@
-<!-- 
 <div class="everyDrink">
-
-	<div class="homeList" ng-repeat="cocktail in $ctrl.cocktails">
-		<img class="img-rounded liquorPicture" src="http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg" alt="" width="250px">
-
-		<h3>
-			<a ui-sref="show({cocktailId: cocktail._id})">
-			{{cocktail.name}}
-			<span class="glyphicon glyphicon-circle-arrow-right"></span>
-			</a>
-		</h3>
-
-	</div>
-
-</div>
-
- -->
-
-<div class="everyDrink">
-
 	<ul class="homeList" ng-repeat="cocktail in $ctrl.cocktails">
-
 		<li>
 			<a ui-sref="show({cocktailId: cocktail._id})" class="thumbnail">
 				<img class="img-rounded liquorPicture" src="http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg" alt="" width="250px">
-
 				<h3 class="drinkText">
 					{{cocktail.name}}
 					<span class="glyphicon glyphicon-circle-arrow-right"></span>
-					
 				</h3>
 			</a>
 		</li>
-
 	</ul>
-
 </div>
 
 
