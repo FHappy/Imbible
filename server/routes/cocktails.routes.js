@@ -18,5 +18,6 @@ module.exports = function(app) {
   app.route('/api/cocktails/new')
      .post(cocktails.addCocktail);
 
-  
+  app.route('/api/cocktails/seeds/images')
+     .get(cocktails.addImages);
 }

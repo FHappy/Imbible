@@ -1,4 +1,5 @@
 var Cocktail = require('mongoose').model('Cocktail');
+var cocktailImagesArray = require('./../db/seeds.images.js');
 
 exports.loadAll = function(req, res, next) {
     Cocktail.find({})
@@ -92,4 +93,20 @@ exports.searchCocktails = function(req, res, next) {
                     });
                 });
         });
+};
+
+exports.addImages = function (req, res, next) {
+  var imageLinks = [];
+  for (image of cocktailImagesArray) {
+    var cocktailName = Object.keys(image)[0];
+    // console.log(cocktailName);
+    Cocktail.find({name: cocktailName})
+      .exec(function (err, cocktail) {
+        if (err) {console.log('no cocktail found for entry with name ' + cocktailName);}
+        console.log('cocktail found apparently');
+        console.log(cocktail);
+        imageLinks.push(cocktail);
+      });
+  }
+  res.json({foundCocktails: imageLinks})
 };
