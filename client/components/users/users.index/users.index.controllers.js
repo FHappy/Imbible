@@ -1,4 +1,4 @@
 angular
-    .module('imbibleAPP')
+    .module('imbibleApp')
     .controller('IndexController', IndexController);
 
