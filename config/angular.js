@@ -22,7 +22,24 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         .state('new', {
             url: '/cocktails/new',
             template: '<cocktails-new></cocktails-new>'
+        })
+        .state('newUser', {
+            url: '/users/signup',
+            template: ''
+        })
+        .state('login', {
+            url: '/users/login',
+            template: ''
+        })
+        .state('editUser', {
+            url: '/users/edit/:userId',
+            template: ''
+        })
+        .state('showUser', {
+            url: '/users/:userId',
+            template: ''
         });
+
 
     $urlRouterProvider.otherwise('/');
 }

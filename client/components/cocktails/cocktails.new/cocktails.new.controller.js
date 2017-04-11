@@ -18,7 +18,7 @@ function CocktailsNewController(CocktailsService, $state) {
 			.addCocktail(vm.newCocktail)
 			.then(function resolve(response) {
 				vm.newCocktail = {};
-				$state.go('list')
+				$state.go('list');
 			});
 	}
 }
