@@ -1,23 +1,47 @@
+<h1 class="drinkName">
+					 {{$ctrl.cocktail.name}}
+			 </h1>
+			 <hr>
+<div class="container-fluid mainShow">
 
-<div class="container-fluid">
-	<div class=drinkShow>
-		<h1>
-			{{$ctrl.cocktail.name}}
-		</h1>
-		<hr>
-		<ul>
-		<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" alt="">
-			<li>{{$ctrl.cocktail.category}}</li>
-			<!-- ingredients -->
-			<li>{{$ctrl.cocktail.preparation}}</li>
+	 <div class="drinkShow">
+			 <div class="liqourPicture">
+					 <img class="img-circle" src="http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg" alt="" width="250px">
+			 </div>
 
-			<li ng-repeat="ingredient in $ctrl.cocktail.ingredients">
-				Unit: {{ingredient.unit}}
-				Amount: {{ingredient.amount}}
-				Ingredient: {{ingredient.ingredient}}
-				<span ng-if="ingredient.label">Label: {{ingredient.label}}</span>
-			</li>
+			 <div class="containter liqourInfo">
+					 <ul>
+					 <span class="liqourTitle">Category: </span>
+							 <p>{{$ctrl.cocktail.category}}</p>
+							 <hr>
+							 <!-- ingredients -->
+							 <p>{{$ctrl.cocktail.preparation}}</p>
 
-		</ul>
-	</div>
+							 <p ng-repeat="ingredient in $ctrl.cocktail.ingredients">
+									 <span class="liqourTitle">Amount: </span>
+											 {{ingredient.amount}}
+									 <span class="liqourTitle"></span>
+											 {{ingredient.unit}}
+									 <span class="liqourTitle"></span>
+											 {{ingredient.ingredient}}
+									 <span ng-if="ingredient.label">
+									 <span class="liqourTitle">Label: </span>
+											 {{ingredient.label}}
+									 </span>
+							 </p>
+					 </ul>
+			 </div>
+
+	 </div>
 </div>
+
+<!--                     <span class="liqourTitle">Amount: </span>
+											 {{ingredient.amount}}
+									 <span class="liqourTitle">Unit: </span>
+											 {{ingredient.unit}}
+									 <span class="liqourTitle">Ingredient: </span>
+											 {{ingredient.ingredient}}
+									 <span ng-if="ingredient.label">
+									 <span class="liqourTitle">Label: </span>
+											 {{ingredient.label}}
+									 </span> -->

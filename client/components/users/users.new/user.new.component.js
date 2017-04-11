@@ -1,11 +1,11 @@
-var UsersNewTemplate = require(__dirname +  '/users-new.html');
-var UsersNewComponent = require(__dirname + '/users-new.controller.js');
+var template = require(__dirname +  './users.new.html');
+var controller = require(__dirname + './users.new.controller.js');
 
-var UsersNewComponent = {
-     controller: usersnewController,
-     template: usersnewTemplate
+var component = {
+     controller: controller,
+     template: template
 };
 
 angular
     .module('imbibleApp')
-    .component('usersnewController', usersnewComponent);
+    .component('UsersNewComponent', component);

@@ -1,0 +1,13 @@
+<form ng-submit="$ctrl.editCurrentReview()" id="editReview">
+	<div>
+		<label for="editReview-reviewer">Reviewer: {{$ctrl.review.reviewer}</label>
+		<input type="text" ng-model="$ctrl.editReview.reviewer" name="">
+	</div>	
+	<div>
+		<label for="editReview-rating">Rating: {{$ctrl.review.rating}}</label>
+		<input type="number" ng-model="$ctrl.editReview.rating" name="">
+	</div>
+	<div>
+		<input type="submit" value="Edit Review" name="">
+	</div>
+</form>

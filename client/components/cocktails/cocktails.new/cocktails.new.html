@@ -1,0 +1,51 @@
+
+<div class="container-fluid">
+	<div class=drinkAdd>
+		<form ng-submit="$ctrl.addNewCocktail()" id="newCocktail">
+			<div>
+				<label for="newCocktail-createdBy">Created By: </label>
+				<input type="text" ng-model="$ctrl.newCocktail.createdBy" placeholder="Username">
+			</div>
+			<h1>
+				<label for="newCocktail-name">Name: </label>
+				<input type="text" ng-model="$ctrl.newCocktail.name" placeholder="Name">
+			</h1>
+			<hr>
+			<img src="" alt="">
+				<div>
+					<label for="newCocktail-category">Category: </label>
+					<input type="text" ng-model="$ctrl.newCocktail.category" placeholder="Category">
+				</div>
+				<div>
+					<label for="newCocktail-preparation">Preparation: </label>
+					<input type="text" ng-model="$ctrl.newCocktail.preparation" placeholder="Preparation">
+				</div>
+				<h3>Ingredients:</h3>
+				<ul>
+					<li ng-repeat="ingredient in $ctrl.cocktail.ingredients">
+						<div>
+							<label for="newCocktail-amount">Amount: </label>
+							<input type="text" ng-model="$ctrl.newCocktail.ingredient.amount" placeholder="Amount">
+						</div>
+						<div>
+							<label for="newCocktail-unit">Unit: </label>
+							<input type="text" ng-model="$ctrl.newCocktail.ingredient.unit" placeholder="Unit">
+						</div>
+						<div>
+							<label for="newCocktail-ingredient">Ingredient: </label>
+							<input type="text" ng-model="$ctrl.newCocktail.ingredient.ingredient" placeholder="Ingredient">
+						</div>
+						<span ng-if="ingredient.label">
+							<div>
+								<label for="newCocktail-label">Label: </label>
+								<input type="text" ng-model="$ctrl.newCocktail.ingredient.label" placeholder="Brand Name or Sub-group of Ingredient">
+							</div>
+						</span>
+					</li>
+				</ul>
+			<div>
+				<input type="submit" value="New Cocktail" name="">
+			</div>
+		</form>
+	</div>
+</div>
