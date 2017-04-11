@@ -23,4 +23,9 @@ function CocktailsService($http) {
     function search(url) {
         return $http.get('/api/cocktails/search/' + url);
     }
+    // function search(queryParams) {
+    //     return $http.get('/api/cocktails/search/', {
+    //       query: queryParams
+    //     });
+    // }
 }
