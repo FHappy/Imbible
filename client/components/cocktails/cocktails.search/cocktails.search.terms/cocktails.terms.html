@@ -1,8 +1,6 @@
-<div>
-  <ul>
-    <li ng-repeat="term in $ctrl.terms">
-      <p>{{term}}</p>
-      <button ng-click="$ctrl.removeTerm(term)">x</button>
-    </li>
-  </ul>
+<div class="searchResult">
+	<li ng-repeat="term in $ctrl.terms">
+		<button ng-click="$ctrl.removeTerm(term)"><span class="glyphicon glyphicon-remove"></span></button>
+		<span class="searchTerm">{{term}}</span>
+	</li>
 </div>
