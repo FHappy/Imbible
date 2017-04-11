@@ -1,24 +1,31 @@
-CocktailsEditController.$inject = ['CocktailsService', '$stateParams'];
+CocktailsEditController.$inject = ['CocktailsService', '$stateParams', '$state'];
 
-function CocktailsEditController(CocktailsService, $stateParams) {
+function CocktailsEditController(CocktailsService, $stateParams, $state) {
 
-	const vm = this;
+    const vm = this;
 
-	vm.current = {};
+    vm.current = {};
+    vm.editCocktail = editCurrentCocktail;
 
-	activate();
+    activate();
 
-	function activate() {
-		editCurrentCocktail();
-	}
+    function activate() {
+        CocktailsService
+            .loadCocktail($stateParams.cocktailId)
+            .then(function resolve(response) {
+                vm.current = response.data.cocktail;
+            });
+    }
 
-	function editCurrentCocktail() {
-		CocktailsService
-			.editCocktail($stateParams.cocktailId)
-			.then(function resolve(response) {
-				vm.current = response.data.cocktail;
-			});
-	}
+    function editCurrentCocktail() {
+        CocktailsService
+            .editCocktail(vm.current)
+            .then(function resolve(response) {
+                $state.go('show', {
+                    cocktailId: vm.current._id
+                });
+            });
+    }
 }
 
 module.exports = CocktailsEditController;

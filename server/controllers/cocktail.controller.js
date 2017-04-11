@@ -1,4 +1,5 @@
 var Cocktail = require('mongoose').model('Cocktail');
+var cocktailImagesArray = require('./../db/seeds.images.js');
 
 exports.loadAll = function(req, res, next) {
     Cocktail.find({})
@@ -6,7 +7,7 @@ exports.loadAll = function(req, res, next) {
             if (err) {
                 res.json({
                     message: 'Could not find any cocktails due to : ' + err
-                })
+                });
             };
 
             res.json({
@@ -25,22 +26,48 @@ exports.loadCocktail = function(req, res, next) {
         });
 }
 
+exports.addCocktail = function(req, res, next) {
+
+    var cocktail = new Cocktail(req.body);
+
+    cocktail.save(function(err) {
+        if (err) res.json({message: 'Could not create cocktail b/c:' + err});
+
+        res.json({cocktail: cocktail});
+    });
+}
+
+exports.editCocktail = function(req, res, next) {
+
+    var id = req.params.cocktailId;
+
+    Cocktail.findById({_id: id}, function(err, cocktail) {
+        if (err) {res.json({message: 'Could not find that cocktail : ' + err})};
+        if (req.body.createdBy) cocktail.createdBy = req.body.createdBy;
+        if (req.body.name) cocktail.name = req.body.name;
+        if (req.body.preparation) cocktail.preparation = req.body.preparation;
+        if (req.body.category) cocktail.category = req.body.category;
+        if (req.body.glass) cocktail.glass = req.body.glass;
+        if (req.body.garnish) cocktail.garnish = req.body.garnish;
+        if (req.body.ingredients) cocktail.ingredients = req.body.ingredients;
+        if (req.body.reviews) cocktail.reviews = req.body.reviews;
+        if (req.body.img) cocktail.img = req.body.img;
+
+        cocktail.save(function(err) {
+            if(err) res.json({messsage: 'Could not update cocktail b/c:' + err});
+
+            res.json({message: 'Cocktail successfully updated'});
+        });
+    });
+
+}
+
 exports.searchCocktails = function(req, res, next) {
     var queryArray = [];
-    console.log('req.query is ');
-    console.log(req.query);
-    console.log('req.params.query is ');
-    console.log(req.params.query);
-    console.log('req.params is');
-    console.log(req.params);
     for (x in req.query) {
         queryArray.push(req.query[x]);
     }
-    // for (term of req.query) {
-    //     queryArray.push(term)
-    // }
 
-    // res.json({queries: queryArray});
     var finalQuery = [];
 
     for (var i = 0; i < queryArray.length; i++) {
@@ -66,4 +93,20 @@ exports.searchCocktails = function(req, res, next) {
                     });
                 });
         });
+};
+
+exports.addImages = function (req, res, next) {
+  for (image of cocktailImagesArray) {
+    var cocktailName = Object.keys(image)[0];
+    // console.log(cocktailName);
+    Cocktail.findOneAndUpdate({name: cocktailName}, {$set: {img: image[cocktailName]}}, function(err, cocktail) {
+      if (err) {console.log('no cocktail found for entry with name ' + cocktailName);}
+
+    });
+        // cocktail.img = image[cocktailName];
+        // cocktail.save(function(err) {
+        //   if (err) {console.log('error during img save');}
+        // });
+  }
+  res.json({foundCocktails: 'slkfjsljf'})
 };

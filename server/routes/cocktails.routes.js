@@ -12,7 +12,12 @@ module.exports = function(app) {
   	 .get(cocktails.searchCocktails);
 
   app.route('/api/cocktails/:cocktailId')
-  	 .get(cocktails.loadCocktail);
+  	 .get(cocktails.loadCocktail)
+     .patch(cocktails.editCocktail);
 
+  app.route('/api/cocktails/new')
+     .post(cocktails.addCocktail);
 
+  app.route('/api/cocktails/seeds/images')
+     .get(cocktails.addImages);
 }

@@ -1,14 +1,14 @@
-var template = require(__dirname +  '/users.show.html');
-var controller = require(__dirname + '/users.show.controller.js');
-
-var component = {
-     controller: controller,
-     template: template
-};
-
-angular
-    .module('imbibleApp')
-    .component('UsersShow', component);
+// var template = require(__dirname +  '/users.show.html');
+// var controller = require(__dirname + '/users.show.controller.js');
+//
+// var component = {
+//      controller: controller,
+//      template: template
+// };
+//
+// angular
+//     .module('imbibleApp')
+//     .component('usersShow', component);
 
 
 // var UsersShowTemplate = require(__dirname +  '/cocktails-show-show.html');

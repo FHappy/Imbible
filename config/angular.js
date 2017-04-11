@@ -14,7 +14,32 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         .state('search', {
             url: '/cocktails/search',
             template: '<cocktails-search></cocktails-search>'
+        })
+        .state('edit', {
+            url: '/cocktails/edit/:cocktailId',
+            template: '<cocktails-edit></cocktails-edit>'
+        })
+        .state('new', {
+            url: '/cocktails/new',
+            template: '<cocktails-new></cocktails-new>'
+        })
+        .state('newUser', {
+            url: '/users/signup',
+            template: ''
+        })
+        .state('login', {
+            url: '/users/login',
+            template: ''
+        })
+        .state('editUser', {
+            url: '/users/edit/:userId',
+            template: ''
+        })
+        .state('showUser', {
+            url: '/users/:userId',
+            template: ''
         });
+
 
     $urlRouterProvider.otherwise('/');
 }
