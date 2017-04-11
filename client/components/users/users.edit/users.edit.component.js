@@ -2,10 +2,10 @@ var UsersEditTemplate = require(__dirname +  '/users-edit.html');
 var UsersEditComponent = require(__dirname + '/users-edit.controller.js');
 
 var UsersEditComponent = {
-     controller: userseditController,
-     template: userseditTemplate
+     controller: usersEditController,
+     template: usersEditTemplate
 };
 
 angular
-    .module('fhappyApp')
-    .component('userseditController', userseditComponent);
+    .module('imbibleApp')
+    .component('UsersEditComponent', usersEditComponent);

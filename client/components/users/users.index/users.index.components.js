@@ -1,11 +1,11 @@
-var UsersIndexTemplate = require(__dirname +  '/users-index.html');
-var UsersIndexComponent = require(__dirname + '/users-index.controller.js');
+var usersIndexTemplate = require(__dirname +  '/cocktails-index.html');
+var usersIndexController = require(__dirname + '/cocktails-index.controller.js');
 
-var UsersIndexComponent = {
-     controller: usersindexController,
-     template: usersindexTemplate
+var usersIndexComponent = {
+     controller: usersIndexController,
+     template: usersIndexTemplate
 };
 
 angular
-    .module('fhappyApp')
-    .component('usersindexController', usersindexComponent);
+    .module('imbibleApp')
+    .component('usersIndex', usersIndexComponent);

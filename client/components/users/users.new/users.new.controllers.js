@@ -1,3 +1,3 @@
 angular
-    .module('fhappyApp')
+    .module('imbibleApp')
     .controller('NewController', NewController);

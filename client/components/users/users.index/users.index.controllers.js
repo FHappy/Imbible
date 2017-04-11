@@ -1,4 +1,4 @@
 angular
-    .module('fhappyApp')
+    .module('imbibleAPP')
     .controller('IndexController', IndexController);
-    
+

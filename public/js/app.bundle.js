@@ -259,11 +259,11 @@ var UsersEditTemplate = __webpack_require__(!(function webpackMissingModule() { 
 var UsersEditComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.edit/users-edit.controller.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 var UsersEditComponent = {
-     controller: userseditController,
-     template: userseditTemplate
+     controller: usersEditController,
+     template: usersEditTemplate
 };
 
-angular.module('fhappyApp').component('userseditController', userseditComponent);
+angular.module('imbibleApp').component('UsersEditComponent', usersEditComponent);
 
 /***/ }),
 /* 11 */
@@ -291,21 +291,21 @@ module.exports = UsersEditController;
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var UsersIndexTemplate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.index/users-index.html\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-var UsersIndexComponent = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.index/users-index.controller.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var usersIndexTemplate = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.index/cocktails-index.html\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var usersIndexController = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.index/cocktails-index.controller.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
-var UsersIndexComponent = {
-     controller: usersindexController,
-     template: usersindexTemplate
+var usersIndexComponent = {
+     controller: usersIndexController,
+     template: usersIndexTemplate
 };
 
-angular.module('fhappyApp').component('usersindexController', usersindexComponent);
+angular.module('imbibleApp').component('usersIndex', usersIndexComponent);
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports) {
 
-angular.module('fhappyApp').controller('IndexController', IndexController);
+angular.module('imbibleAPP').controller('IndexController', IndexController);
 
 /***/ }),
 /* 14 */
@@ -325,7 +325,7 @@ angular.module('imbibleApp').component('usersnewController', usersnewComponent);
 /* 15 */
 /***/ (function(module, exports) {
 
-angular.module('fhappyApp').controller('NewController', NewController);
+angular.module('imbibleApp').controller('NewController', NewController);
 
 /***/ }),
 /* 16 */
