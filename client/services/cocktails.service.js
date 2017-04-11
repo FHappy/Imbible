@@ -15,7 +15,6 @@ function CocktailsService($http) {
 
 
     function editCocktail(cocktail) {
-        console.log(cocktail);
         return $http.patch('/api/cocktails/' + cocktail._id, cocktail);
     }
 
