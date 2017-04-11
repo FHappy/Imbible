@@ -1,7 +1,7 @@
 function UsersEditController(UsersService) {
 	var vm = this;
 
-    var thePromise = UsersService.usersCriminals();
+    var thePromise = UsersService.getUsers();
 
     //
     UsersService.getUsers
