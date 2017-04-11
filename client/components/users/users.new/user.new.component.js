@@ -7,5 +7,5 @@ var UsersNewComponent = {
 };
 
 angular
-    .module('fhappyApp')
+    .module('imbibleApp')
     .component('usersnewController', usersnewComponent);

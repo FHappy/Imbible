@@ -1,5 +1,5 @@
-var UsersEditTemplate = require(__dirname +  '/users-list.html');
-var UsersEditComponent = require(__dirname + '/users-list.controller.js');
+var UsersEditTemplate = require(__dirname +  '/users-edit.html');
+var UsersEditComponent = require(__dirname + '/users-edit.controller.js');
 
 var UsersEditComponent = {
      controller: userseditController,
