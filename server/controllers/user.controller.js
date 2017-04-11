@@ -1,4 +1,5 @@
 var User = require('mongoose').model('User');
+var passport = require('passport');
 
 exports.createUser = function(req, res, next) {
     var user = new User();
@@ -22,4 +23,23 @@ exports.loadAll = function(req, res, next) {
           if (err) {res.json({message: 'Could not find any users'});}
           res.json({users: users});
         });
+};
+
+exports.login = function(req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+      var token;
+
+      if (err) {
+        res.status(404).json(err);
+        return;
+      }
+
+      if (user) {
+        token = user.generateJwt();
+        res.status(200);
+        res.json({"token": token});
+      } else {
+        res.status(401).json(info);
+      }
+    })(req, res);
 };
