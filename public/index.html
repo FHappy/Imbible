@@ -12,16 +12,17 @@
 <body ng-app="imbibleApp">
 
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" ui-sref="list">IMBIBLE</a>
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-        <li><a ui-sref="list">Show All</a></li>
-        <li><a ui-sref="list">Signup</a></li>
-        <li><a ui-sref="list">Login </a></li>
+        <li><a ui-sref="list">HOME</a></li>
+        <li><a ui-sref="search">SEARCH</a></li>
+        <li><a ui-sref="list">SIGNUP</a></li>
+        <li><a ui-sref="list">LOGIN </a></li>
     </ul>
 
   </div>
@@ -29,7 +30,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid" class="main">
     <ui-view></ui-view>
 </div>
 
