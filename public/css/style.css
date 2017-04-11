@@ -9,6 +9,18 @@ body {
 	font-weight: 800;	
 }
 
+a {
+	color: lightgrey;
+	transition: 0.75s;
+	text-decoration: none;
+}
+
+a:hover {
+	color: red;
+	transition: 0.25s;
+	text-decoration: none;
+}
+
 .navbar {
 	padding: 10px 50px 10px 50px;
 	text-align: center;
@@ -19,7 +31,16 @@ body {
 .drinkShow {
 	display: flex;
 	font-size: 1.1em;
+}
 
+.everyDrink {
+	display: flex;
+	flex-wrap: wrap;
+
+}
+
+.homeList {
+	width: 30%;
 }
 
 .mainShow {
@@ -51,7 +72,7 @@ p {
 }
 
 .liqourPicture {
-	padding: 10px;
+	padding: 25px;
 }
 
 .liqourInfo {
@@ -81,6 +102,10 @@ p {
 	}
 	.cocktailsSearch {
 		flex-direction: column;
+	}
+	.everyDrink {
+		flex-direction: column;
+		flex-wrap: nowrap;
 	}
 }
 

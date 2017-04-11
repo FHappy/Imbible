@@ -1,4 +1,14 @@
-<div class="homeList" ng-repeat="cocktail in $ctrl.cocktails">
-  <h3>Name: {{cocktail.name}}</h3>
-  <a ui-sref="show({cocktailId: cocktail._id})">click to see this cocktail</a>
+
+<div class="everyDrink">
+	<div class="homeList" ng-repeat="cocktail in $ctrl.cocktails">
+			<img class="img-rounded liquorPicture" src="http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg" alt="" width="250px">
+	  <h3>
+	  	<a ui-sref="show({cocktailId: cocktail._id})">
+	  	{{cocktail.name}}
+	  	<span class="glyphicon glyphicon-circle-arrow-right"></span>
+	  	</a>
+	  	</a>
+	  </h3>
+
+	</div>
 </div>

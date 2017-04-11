@@ -38417,7 +38417,7 @@ module.exports = "\t\t<h1 class=\"drinkName\">\n\t\t\t{{$ctrl.cocktail.name}}\n\
 /* 17 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"homeList\" ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n  <a ui-sref=\"show({cocktailId: cocktail._id})\">click to see this cocktail</a>\n</div>\n";
+module.exports = "\n<div class=\"everyDrink\">\n\t<div class=\"homeList\" ng-repeat=\"cocktail in $ctrl.cocktails\">\n\t\t\t<img class=\"img-rounded liquorPicture\" src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n\t  <h3>\n\t  \t<a ui-sref=\"show({cocktailId: cocktail._id})\">\n\t  \t{{cocktail.name}}\n\t  \t<span class=\"glyphicon glyphicon-circle-arrow-right\"></span>\n\t  \t</a>\n\t  \t</a>\n\t  </h3>\n\n\t</div>\n</div>\n";
 
 /***/ }),
 /* 18 */
