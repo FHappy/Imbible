@@ -26,11 +26,16 @@ function CocktailsSearchTermsController(SearchFactory, $scope, CocktailsService)
         var searchUrl = SearchFactory.generateUrl();
         console.log('boolean value of searchUrl is ');
         if (searchUrl) {console.log(searchUrl);};
-        CocktailsService
-            .search(searchUrl)
-            .then(function resolve(response) {
-                SearchFactory.setResults(response.data.orCocktails, response.data.andCocktails);
-            });
+        if (vm.terms) {
+          CocktailsService
+              .search(searchUrl)
+              .then(function resolve(response) {
+                  SearchFactory.setResults(response.data.orCocktails, response.data.andCocktails);
+              });
+        } else {
+          SearchFactory.setResults([], []);
+        }
+
     }
 
 }

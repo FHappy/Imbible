@@ -1,4 +1,5 @@
-angular
-    .module('imbibleAPP')
-    .controller('IndexController', IndexController);
-
+// // angular
+// //     .module('imbibleApp')
+// //     .controller('IndexController', IndexController);
+//
+// UsersIndexController.$inject = ['']

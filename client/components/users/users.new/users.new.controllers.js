@@ -1,3 +1,3 @@
-angular
-    .module('imbibleApp')
-    .controller('NewController', NewController);
+// angular
+//     .module('imbibleApp')
+//     .controller('NewController', NewController);
