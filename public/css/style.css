@@ -20,13 +20,25 @@ body {
 }
 
 .mainShow {
-	background-color: wheat;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 25px;
 }
 
-
 ul {
-	padding: 0px;
-	list-style: none;
+	padding: 0;
+	margin: 0;
+}
 
+p {
+	color: white;
+}
+
+.liqourTitle {
+	color: red;
+}
+
+.liqourInfo {
+	padding: 10px;
+}
 
 
