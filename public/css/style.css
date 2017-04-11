@@ -114,6 +114,26 @@ p {
 
 }
 
+button {
+    border-radius: 35%;
+    background-color: black;
+    padding: 0px 10px;
+}
+.glyphicon-remove {
+    color: red;
+}
+.searchResult {
+    display: flex;
+    flex-direction: column;
+    font-size: .5em;
+    padding: 0px 10px;
+}
+.searchResult li {
+    list-style: none;
+    padding: 10px 0px;
+}
+
+
 .liqourInfo {
     padding: 10px;
 }
