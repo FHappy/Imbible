@@ -303,15 +303,19 @@ function CocktailsSearchTermsController(SearchFactory, $scope, CocktailsService)
     $scope.$watch(function () {
         return SearchFactory.terms;
     }, function (newValue, oldValue) {
-        // SearchFactory.setTerms(newValue);
+        SearchFactory.setTerms(newValue);
         vm.terms = SearchFactory.terms;
     });
 
-    function removeTerm(term) {
-        vm.terms = vm.terms.filter(x => x !== term);
+    function removeTerm(removedTerm) {
+        vm.terms = vm.terms.filter(term => term !== removedTerm);
         SearchFactory.setTerms(vm.terms);
 
         var searchUrl = SearchFactory.generateUrl();
+        console.log('boolean value of searchUrl is ');
+        if (searchUrl) {
+            console.log(searchUrl);
+        };
         CocktailsService.search(searchUrl).then(function resolve(response) {
             SearchFactory.setResults(response.data.orCocktails, response.data.andCocktails);
         });
@@ -572,6 +576,19 @@ function CocktailsSearchFactory() {
     function generateUrl() {
         var allSearchTerms = this.terms;
         var searchUrl = '?';
+        if (allSearchTerms.length === 0) {
+            searchUrl = '';
+        }
+        // var params = [];
+        // allSearchTerms.forEach(function iterateOver(term, index) {
+        //     // var newParam = {};
+        //     // var key = 'q' + index;
+        //     // newParam[key] = term;
+        //     // params.push(newParam);
+        //     params.push(term);
+        // });
+        // console.log(params);
+        // return params;
         for (var i = 0; i < allSearchTerms.length; i++) {
             searchUrl += 'q' + i + '=' + allSearchTerms[i];
             if (i !== allSearchTerms.length - 1) {
@@ -624,6 +641,11 @@ function CocktailsService($http) {
     function search(url) {
         return $http.get('/api/cocktails/search/' + url);
     }
+    // function search(queryParams) {
+    //     return $http.get('/api/cocktails/search/', {
+    //       query: queryParams
+    //     });
+    // }
 }
 
 /***/ }),
@@ -38344,7 +38366,7 @@ module.exports = "<h1 class=\"drinkName\">\n\t\t\t\t\t {{$ctrl.cocktail.name}}\n
 /* 33 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkEdit>\n\t\t<form ng-submit=\"$ctrl.editCurrentCocktail()\" id=\"editCocktail\">\n\t\t\t<h1>\n\t\t\t\t<label for=\"editCocktail-name\">Name: {{$ctrl.cocktail.name}}</label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.name\" name=\"\">\n\t\t\t</h1>\n\t\t\t<hr>\n\t\t\t<img src=\"xxxHTMLLINKxxx0.297198556506990560.15298324081096903xxx\" alt=\"\">\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"editCocktail-category\">Category: {{$ctrl.cocktail.category}}</label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.category\" name=\"\">\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"editCocktail-preparation\">Preparation: {{$ctrl.cocktail.preparation}}</label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.preparation\" name=\"\">\n\t\t\t\t</div>\n\t\t\t\t<ul>\n\t\t\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-amount\">Amount: {{ingredient.amount}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.amount\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-unit\">Unit: {{ingredient.unit}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.unit\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-ingredient\">Ingredient: {{ingredient.ingredient}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.ingredient\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<label for=\"editCocktail-label\">Label: {{ingredient.label}}</label>\n\t\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.label\" name=\"\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t<div>\n\t\t\t\t<input type=\"submit\" value=\"Edit Cocktail\" name=\"\">\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>";
+module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkEdit>\n\t\t<form ng-submit=\"$ctrl.editCurrentCocktail()\" id=\"editCocktail\">\n\t\t\t<h1>\n\t\t\t\t<label for=\"editCocktail-name\">Name: {{$ctrl.cocktail.name}}</label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.name\" name=\"\">\n\t\t\t</h1>\n\t\t\t<hr>\n\t\t\t<img src=\"xxxHTMLLINKxxx0.83043585119794060.5526672117589948xxx\" alt=\"\">\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"editCocktail-category\">Category: {{$ctrl.cocktail.category}}</label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.category\" name=\"\">\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"editCocktail-preparation\">Preparation: {{$ctrl.cocktail.preparation}}</label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.preparation\" name=\"\">\n\t\t\t\t</div>\n\t\t\t\t<ul>\n\t\t\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-amount\">Amount: {{ingredient.amount}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.amount\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-unit\">Unit: {{ingredient.unit}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.unit\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"editCocktail-ingredient\">Ingredient: {{ingredient.ingredient}}</label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.ingredient\" name=\"\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<label for=\"editCocktail-label\">Label: {{ingredient.label}}</label>\n\t\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.editCocktail.ingredient.label\" name=\"\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t<div>\n\t\t\t\t<input type=\"submit\" value=\"Edit Cocktail\" name=\"\">\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>";
 
 /***/ }),
 /* 34 */
@@ -38356,7 +38378,7 @@ module.exports = "<div class=\"everyDrink\">\n    <ul class=\"homeList\" ng-repe
 /* 35 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkAdd>\n\t\t<form ng-submit=\"$ctrl.addNewCocktail()\" id=\"newCocktail\">\n\t\t\t<div>\n\t\t\t\t<label for=\"newCocktail-createdBy\">Created By: </label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.createdBy\" placeholder=\"Username\">\n\t\t\t</div>\n\t\t\t<h1>\n\t\t\t\t<label for=\"newCocktail-name\">Name: </label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.name\" placeholder=\"Name\">\n\t\t\t</h1>\n\t\t\t<hr>\n\t\t\t<img src=\"xxxHTMLLINKxxx0.83992433284980580.1935254020946522xxx\" alt=\"\">\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"newCocktail-category\">Category: </label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.category\" placeholder=\"Category\">\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"newCocktail-preparation\">Preparation: </label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.preparation\" placeholder=\"Preparation\">\n\t\t\t\t</div>\n\t\t\t\t<h3>Ingredients:</h3>\n\t\t\t\t<ul>\n\t\t\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-amount\">Amount: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.amount\" placeholder=\"Amount\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-unit\">Unit: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.unit\" placeholder=\"Unit\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-ingredient\">Ingredient: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.ingredient\" placeholder=\"Ingredient\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<label for=\"newCocktail-label\">Label: </label>\n\t\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.label\" placeholder=\"Brand Name or Sub-group of Ingredient\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t<div>\n\t\t\t\t<input type=\"submit\" value=\"New Cocktail\" name=\"\">\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>";
+module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkAdd>\n\t\t<form ng-submit=\"$ctrl.addNewCocktail()\" id=\"newCocktail\">\n\t\t\t<div>\n\t\t\t\t<label for=\"newCocktail-createdBy\">Created By: </label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.createdBy\" placeholder=\"Username\">\n\t\t\t</div>\n\t\t\t<h1>\n\t\t\t\t<label for=\"newCocktail-name\">Name: </label>\n\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.name\" placeholder=\"Name\">\n\t\t\t</h1>\n\t\t\t<hr>\n\t\t\t<img src=\"xxxHTMLLINKxxx0.75338661943011420.8480266188786882xxx\" alt=\"\">\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"newCocktail-category\">Category: </label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.category\" placeholder=\"Category\">\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<label for=\"newCocktail-preparation\">Preparation: </label>\n\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.preparation\" placeholder=\"Preparation\">\n\t\t\t\t</div>\n\t\t\t\t<h3>Ingredients:</h3>\n\t\t\t\t<ul>\n\t\t\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-amount\">Amount: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.amount\" placeholder=\"Amount\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-unit\">Unit: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.unit\" placeholder=\"Unit\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t<label for=\"newCocktail-ingredient\">Ingredient: </label>\n\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.ingredient\" placeholder=\"Ingredient\">\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<span ng-if=\"ingredient.label\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<label for=\"newCocktail-label\">Label: </label>\n\t\t\t\t\t\t\t\t<input type=\"text\" ng-model=\"$ctrl.newCocktail.ingredient.label\" placeholder=\"Brand Name or Sub-group of Ingredient\">\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t<div>\n\t\t\t\t<input type=\"submit\" value=\"New Cocktail\" name=\"\">\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>";
 
 /***/ }),
 /* 36 */
