@@ -1,5 +1,6 @@
 body {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	margin: 0 auto;
 	margin: 100px;
 	background-color: black;
@@ -25,6 +26,8 @@ a:hover {
 	transition: 0.25s;
 	text-decoration: none;
 =======
+=======
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
     margin: 0 auto;
     margin: 100px;
     background-color: black;
@@ -49,6 +52,9 @@ a:hover {
     color: red;
     transition: 0.25s;
     text-decoration: none;
+<<<<<<< HEAD
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
+=======
 >>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
 }
 
@@ -61,6 +67,7 @@ a:hover {
 }
 .drinkShow {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	display: flex;
 	font-size: 1.1em;
 }
@@ -69,6 +76,8 @@ a:hover {
 	display: flex;
 	flex-wrap: wrap;
 =======
+=======
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
     display: flex;
     font-size: 1.1em;
 }
@@ -76,6 +85,9 @@ a:hover {
 .everyDrink {
     display: flex;
     flex-wrap: wrap;
+<<<<<<< HEAD
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
+=======
 >>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
 
 }
@@ -87,6 +99,7 @@ a:hover {
 
 /*START HOME HOVER*/
 .drinkText {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	opacity: 0;
 	position: absolute;
@@ -117,6 +130,8 @@ a:hover {
 .homeList {
 	width: 50%;	
 =======
+=======
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
     opacity: 0;
     position: absolute;
     left: 0;
@@ -145,11 +160,15 @@ a:hover {
 
 .homeList {
     width: 50%;
+<<<<<<< HEAD
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
+=======
 >>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
 }
 /*END HOVER EFFECT*/
 
 .mainShow {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	max-width: 100%;
 	width: 600px;
@@ -195,6 +214,22 @@ p {
 }
 
 ul {
+=======
+    max-width: 100%;
+    width: 600px;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.drinkName {
+    text-align: right;
+}
+
+ul {
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
     padding: 0;
     margin: 0;
 }
@@ -210,11 +245,15 @@ p {
 
 .liqourPicture {
     background-color: black;
+<<<<<<< HEAD
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
+=======
 >>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
 
 }
 
 .liqourInfo {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	padding: 10px;
 }
@@ -234,6 +273,8 @@ p {
 	flex-direction: column;
 	margin: 0 auto;
 =======
+=======
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
     padding: 10px;
 }
 
@@ -251,11 +292,15 @@ p {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+<<<<<<< HEAD
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
+=======
 >>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
 }
 
 
 @media (max-width: 790px) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	.drinkShow {
 		flex-direction: column;
@@ -280,6 +325,8 @@ p {
 		width: 100vw;
 	}
 =======
+=======
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
     .drinkShow {
         flex-direction: column;
     }
@@ -302,5 +349,8 @@ p {
     .searchResultContainer {
         width: 100vw;
     }
+<<<<<<< HEAD
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
+=======
 >>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
 }

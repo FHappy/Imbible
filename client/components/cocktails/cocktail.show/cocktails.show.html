@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<h1 class="drinkName">
 			{{$ctrl.cocktail.name}}
 		</h1>
@@ -84,6 +85,45 @@
 	 </div>
 </div>
 
+=======
+<h1 class="drinkName">
+					 {{$ctrl.cocktail.name}}
+			 </h1>
+			 <hr>
+<div class="container-fluid mainShow">
+
+	 <div class="drinkShow">
+			 <div class="liqourPicture">
+					 <img class="img-circle" src="http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg" alt="" width="250px">
+			 </div>
+
+			 <div class="containter liqourInfo">
+					 <ul>
+					 <span class="liqourTitle">Category: </span>
+							 <p>{{$ctrl.cocktail.category}}</p>
+							 <hr>
+							 <!-- ingredients -->
+							 <p>{{$ctrl.cocktail.preparation}}</p>
+
+							 <p ng-repeat="ingredient in $ctrl.cocktail.ingredients">
+									 <span class="liqourTitle">Amount: </span>
+											 {{ingredient.amount}}
+									 <span class="liqourTitle"></span>
+											 {{ingredient.unit}}
+									 <span class="liqourTitle"></span>
+											 {{ingredient.ingredient}}
+									 <span ng-if="ingredient.label">
+									 <span class="liqourTitle">Label: </span>
+											 {{ingredient.label}}
+									 </span>
+							 </p>
+					 </ul>
+			 </div>
+
+	 </div>
+</div>
+
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
 <!--                     <span class="liqourTitle">Amount: </span>
 											 {{ingredient.amount}}
 									 <span class="liqourTitle">Unit: </span>
@@ -94,4 +134,7 @@
 									 <span class="liqourTitle">Label: </span>
 											 {{ingredient.label}}
 									 </span> -->
+<<<<<<< HEAD
+>>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
+=======
 >>>>>>> bc83805af0dbea11a0e53cdb646578cb2ab6127c
