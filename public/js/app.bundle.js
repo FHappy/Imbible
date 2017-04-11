@@ -570,7 +570,7 @@ angular.module('imbibleApp').component('reviewsNew', reviewNewComponent);
 /***/ (function(module, exports, __webpack_require__) {
 
 var template = __webpack_require__(49);
-var controller = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.edit/users.edit.controller.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var controller = __webpack_require__(26);
 
 var component = {
      controller: controller,
@@ -606,7 +606,7 @@ module.exports = UsersEditController;
 /***/ (function(module, exports, __webpack_require__) {
 
 var UsersIndexTemplate = __webpack_require__(50);
-var UsersIndexController = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.index/users.index.controller.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var UsersIndexController = __webpack_require__(28);
 
 var usersIndexComponent = {
      controller: usersIndexController,
@@ -625,15 +625,15 @@ angular.module('imbibleAPP').controller('IndexController', IndexController);
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var template = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.new./users.new.html\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-var controller = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"/Users/NeilM/GA/projects/project_3/project-3/client/components/users/users.new./users.new.controller.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var template = __webpack_require__(51);
+var controller = __webpack_require__(30);
 
 var component = {
      controller: controller,
      template: template
 };
 
-angular.module('imbibleApp').component('UsersNewComponent', component);
+angular.module('imbibleApp').component('UsersNew', component);
 
 /***/ }),
 /* 30 */
@@ -38892,7 +38892,12 @@ module.exports = "<div>\n      Testing\n\n      <br>\n      {{ $ctrl.cocktails.e
 module.exports = "<div>\n      Testing\n\n      <br>\n      {{ $ctrl.cocktails.index }}\n      \n      {{ $ctrl.cocktails.index }}\n      \n     <div ng-repeat=\"user in $ctrl.cocktailsEdit\">\n     <span> Name: {{user.username}}</span>\n     <span> Username: {{user.username}}></span>\n</div>";
 
 /***/ }),
-/* 51 */,
+/* 51 */
+/***/ (function(module, exports) {
+
+module.exports = "\t<div class=usersNew>\n\t\t<h1>\n\t\t\t{{$ctrl.users.name}}\n\t\t</h1>\n\t\t\n\t\t<ul>\n\t\t    <li>  \n               {{users.name}}\n\t\t\t</li>\n\n\t\t</ul>\n\t</div>\n</div>\n\n";
+
+/***/ }),
 /* 52 */
 /***/ (function(module, exports) {
 

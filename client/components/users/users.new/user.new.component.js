@@ -1,5 +1,5 @@
-var template = require(__dirname +  './users.new.html');
-var controller = require(__dirname + './users.new.controller.js');
+var template = require(__dirname +  '/users.new.html');
+var controller = require(__dirname + '/users.new.controllers.js');
 
 var component = {
      controller: controller,
@@ -8,4 +8,4 @@ var component = {
 
 angular
     .module('imbibleApp')
-    .component('UsersNewComponent', component);
+    .component('UsersNew', component);

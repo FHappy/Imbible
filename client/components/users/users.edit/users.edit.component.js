@@ -1,5 +1,5 @@
 var template = require(__dirname +  '/users.edit.html');
-var controller = require(__dirname + '/users.edit.controller.js');
+var controller = require(__dirname + '/users.edit.controllers.js');
 
 var component = {
      controller: controller,
