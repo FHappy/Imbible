@@ -236,6 +236,8 @@ function CocktailsSearchTermsController(SearchFactory, $scope) {
     const vm = this;
 
     vm.terms = [];
+    vm.removeTerm = removeTerm;
+
     activate();
 
     function activate() {
@@ -245,8 +247,14 @@ function CocktailsSearchTermsController(SearchFactory, $scope) {
     $scope.$watch(function () {
         return SearchFactory.terms;
     }, function (newValue, oldValue) {
-        SearchFactory.setTerms(newValue);
+        // SearchFactory.setTerms(newValue);
+        vm.terms = SearchFactory.terms;
     });
+
+    function removeTerm(term) {
+        vm.terms = vm.terms.filter(x => x !== term);
+        SearchFactory.setTerms(vm.terms);
+    }
 }
 
 module.exports = CocktailsSearchTermsController;
@@ -38161,7 +38169,7 @@ module.exports = "<cocktails-form></cocktails-form>\n\n<terms></terms>\n\n<eithe
 /* 28 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <ul>\n    <li ng-repeat=\"term in $ctrl.terms\">\n      <p>{{term}}</p>\n    </li>\n  </ul>\n</div>\n";
+module.exports = "<div>\n  <ul>\n    <li ng-repeat=\"term in $ctrl.terms\">\n      <p>{{term}}</p>\n      <button ng-click=\"$ctrl.removeTerm(term)\">x</button>\n    </li>\n  </ul>\n</div>\n";
 
 /***/ }),
 /* 29 */
