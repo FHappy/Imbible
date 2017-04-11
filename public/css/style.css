@@ -59,7 +59,6 @@ p {
 }
 
 .searchFormContainer {
-
 	padding: 25px;
 }
 
@@ -71,7 +70,7 @@ p {
 
 .cocktailsSearch {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	margin: 0 auto;
 }
 
