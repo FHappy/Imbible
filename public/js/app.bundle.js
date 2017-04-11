@@ -38411,13 +38411,13 @@ module.exports = uiRouterSetup;
 /* 16 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container-fluid\">\n\t<div class=drinkShow>\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t\t<ul>\n\t\t<img src=\"https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150\" alt=\"\">\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\tUnit: {{ingredient.unit}}\n\t\t\t\tAmount: {{ingredient.amount}}\n\t\t\t\tIngredient: {{ingredient.ingredient}}\n\t\t\t\t<span ng-if=\"ingredient.label\">Label: {{ingredient.label}}</span>\n\t\t\t</li>\n\n\t\t</ul>\n\t</div>\n</div>\n";
+module.exports = "\n<div class=\"container-fluid mainShow\">\n\t\t<h1>\n\t\t\t{{$ctrl.cocktail.name}}\n\t\t</h1>\n\t\t<hr>\n\t<div class=\"drinkShow\">\n\t\t<div class=\"liqourPicture\">\n\t\t\t<img src=\"http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg\" alt=\"\" width=\"250px\">\n\t\t</div>\n\n\t\t<ul>\n\t\t\t<li>{{$ctrl.cocktail.category}}</li>\n\t\t\t<!-- ingredients -->\n\t\t\t<li>{{$ctrl.cocktail.preparation}}</li>\n\n\t\t\t<li ng-repeat=\"ingredient in $ctrl.cocktail.ingredients\">\n\t\t\t\tUnit: {{ingredient.unit}}\n\t\t\t\tAmount: {{ingredient.amount}}\n\t\t\t\tIngredient: {{ingredient.ingredient}}\n\t\t\t\t<span ng-if=\"ingredient.label\">Label: {{ingredient.label}}</span>\n\t\t\t</li>\n\t\t</ul>\n\n\t</div>\n</div>\n";
 
 /***/ }),
 /* 17 */
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n  <a ui-sref=\"show({cocktailId: cocktail._id})\">click to see this cocktail</a>\n</div>\n";
+module.exports = "<div class=\"homeList\" ng-repeat=\"cocktail in $ctrl.cocktails\">\n  <h3>Name: {{cocktail.name}}</h3>\n  <a ui-sref=\"show({cocktailId: cocktail._id})\">click to see this cocktail</a>\n</div>\n";
 
 /***/ }),
 /* 18 */

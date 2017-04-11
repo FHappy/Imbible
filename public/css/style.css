@@ -1,7 +1,10 @@
 body {
 	margin: 0 auto;
 	margin: 100px;
-	background-color: darkgrey;
+	background-color: black;
+	color: white;
+	display: block;
+	letter-spacing: 2.5px;
 }
 
 .navbar {
@@ -12,19 +15,18 @@ body {
 	margin-bottom: 0px;
 }
 .drinkShow {
-    max-width: 50%;
-<<<<<<< HEAD
-    margin: 0px auto; 
-=======
-    margin: 0px auto;
->>>>>>> bb0465888bdf75fd858c236eed5098e567282058
+	display: flex;
+	font-size: 1.1em;
 }
+
+.mainShow {
+	background-color: wheat;
+}
+
 
 ul {
 	padding: 0px;
 	list-style: none;
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> bb0465888bdf75fd858c236eed5098e567282058
+
+
+

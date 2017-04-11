@@ -1,12 +1,15 @@
 
-<div class="container-fluid">
-	<div class=drinkShow>
+<div class="container-fluid mainShow">
 		<h1>
 			{{$ctrl.cocktail.name}}
 		</h1>
 		<hr>
+	<div class="drinkShow">
+		<div class="liqourPicture">
+			<img src="http://cdn.liquor.com/wp-content/uploads/2012/09/bourbon-old-fashioned.jpg" alt="" width="250px">
+		</div>
+
 		<ul>
-		<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" alt="">
 			<li>{{$ctrl.cocktail.category}}</li>
 			<!-- ingredients -->
 			<li>{{$ctrl.cocktail.preparation}}</li>
@@ -17,7 +20,7 @@
 				Ingredient: {{ingredient.ingredient}}
 				<span ng-if="ingredient.label">Label: {{ingredient.label}}</span>
 			</li>
-
 		</ul>
+
 	</div>
 </div>
