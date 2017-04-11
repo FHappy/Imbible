@@ -14,6 +14,14 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         .state('search', {
             url: '/cocktails/search',
             template: '<cocktails-search></cocktails-search>'
+        })
+        .state('edit', {
+            url: '/cocktails/edit/:cocktailId',
+            template: '<cocktails-edit></cocktails-edit>'
+        })
+        .state('new', {
+            url: '/cocktails/new',
+            template: '<cocktails-new></cocktails-new>'
         });
 
     $urlRouterProvider.otherwise('/');
