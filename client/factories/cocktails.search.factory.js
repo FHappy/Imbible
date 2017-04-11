@@ -4,10 +4,6 @@ function CocktailsSearchFactory() {
         this.terms = newTerms;
     }
 
-    function setEitherResults(newEither) {
-        this.eitherResults = newEither;
-    }
-
     function setAll(newAll) {
         this.allResults = newAll;
     }
