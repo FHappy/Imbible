@@ -26,8 +26,8 @@ function CocktailsService($http) {
         return $http.get('/api/cocktails/' + cocktailId);
     }
 
-    function addCocktail() {
-        return $http.post('/api/cocktails/new');
+    function addCocktail(newCocktail) {
+        return $http.post('/api/cocktails/new', newCocktail);
     }
 
     function search(url) {

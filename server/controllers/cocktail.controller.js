@@ -27,7 +27,7 @@ exports.loadCocktail = function(req, res, next) {
 
 exports.addCocktail = function(req, res, next) {
 
-    var cocktail = new Cocktail(request.body);
+    var cocktail = new Cocktail(req.body);
 
     cocktail.save(function(err) {
         if (err) res.json({message: 'Could not create cocktail b/c:' + err});
@@ -46,12 +46,12 @@ exports.editCocktail = function(req, res, next) {
         if(req.body.name) cocktail.createdBy = req.body.createdBy;
         if(req.body.location) cocktail.name = req.body.name;
         if(req.body.preparation) cocktail.preparation = req.body.preparation;
-        if(req.body.category) cocktail.preparation = req.body.category;
-        if(req.body.glass) cocktail.preparation = req.body.glass;
-        if(req.body.garnish) cocktail.preparation = req.body.garnish;
-        if(req.body.ingredients) cocktail.preparation = req.body.ingredients;
-        if(req.body.reviews) cocktail.preparation = req.body.reviews;
-        if(req.body.img) cocktail.preparation = req.body.img;
+        if(req.body.category) cocktail.category = req.body.category;
+        if(req.body.glass) cocktail.glass = req.body.glass;
+        if(req.body.garnish) cocktail.garnish = req.body.garnish;
+        if(req.body.ingredients) cocktail.ingredients = req.body.ingredients;
+        if(req.body.reviews) cocktail.reviews = req.body.reviews;
+        if(req.body.img) cocktail.img = req.body.img;
 
         cocktail.save(function(err) {
             if(err) res.json({messsage: 'Could not update cocktail b/c:' + err});
@@ -64,20 +64,10 @@ exports.editCocktail = function(req, res, next) {
 
 exports.searchCocktails = function(req, res, next) {
     var queryArray = [];
-    console.log('req.query is ');
-    console.log(req.query);
-    console.log('req.params.query is ');
-    console.log(req.params.query);
-    console.log('req.params is');
-    console.log(req.params);
     for (x in req.query) {
         queryArray.push(req.query[x]);
     }
-    // for (term of req.query) {
-    //     queryArray.push(term)
-    // }
-
-    // res.json({queries: queryArray});
+    
     var finalQuery = [];
 
     for (var i = 0; i < queryArray.length; i++) {
