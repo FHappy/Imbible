@@ -1,0 +1,43 @@
+
+<div class="container-fluid">
+	<div class=drinkEdit>
+		<form ng-submit="$ctrl.editCurrentCocktail()" id="editCocktail">
+			<h1>
+				<label for="editCocktail-name">Name: {{$ctrl.cocktail.name}}</label>
+				<input type="text" ng-model="$ctrl.editCocktail.name" name="">
+			</h1>
+			<hr>
+			<img src="" alt="">
+				<div>
+					<label for="editCocktail-category">Category: {{$ctrl.cocktail.category}}</label>
+					<input type="text" ng-model="$ctrl.editCocktail.category" name="">
+				</div>
+				<div>
+					<label for="editCocktail-preparation">Preparation: {{$ctrl.cocktail.preparation}}</label>
+					<input type="text" ng-model="$ctrl.editCocktail.preparation" name="">
+				</div>
+				<ul>
+					<li ng-repeat="ingredient in $ctrl.cocktail.ingredients">
+						<div>
+							<label for="editCocktail-amount">Amount: {{ingredient.amount}}</label>
+							<input type="text" ng-model="$ctrl.editCocktail.ingredient.amount" name="">
+						</div>
+						<div>
+							<label for="editCocktail-unit">Unit: {{ingredient.unit}}</label>
+							<input type="text" ng-model="$ctrl.editCocktail.ingredient.unit" name="">
+						</div>
+						<div>
+							<label for="editCocktail-ingredient">Ingredient: {{ingredient.ingredient}}</label>
+							<input type="text" ng-model="$ctrl.editCocktail.ingredient.ingredient" name="">
+						</div>
+						<span ng-if="ingredient.label">
+							<div>
+								<label for="editCocktail-label">Label: {{ingredient.label}}</label>
+								<input type="text" ng-model="$ctrl.editCocktail.ingredient.label" name="">
+							</div>
+						</span>
+					</li>
+				</ul>
+		</form>
+	</div>
+</div>
