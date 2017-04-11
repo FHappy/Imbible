@@ -7,9 +7,13 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
             url: '/',
             template: '<cocktails-list></cocktails-list>'
         })
-        .state('cocktailShow', {
-        	url: '/show/:cocktailId',
-        	template: '<cocktail></cocktail>'
+        .state('show', {
+            url: '/cocktails/show/:cocktailId',
+            template: '<cocktail></cocktail>'
+        })
+        .state('search', {
+            url: '/cocktails/search',
+            template: '<cocktails-search></cocktails-search>'
         });
 
     $urlRouterProvider.otherwise('/');
