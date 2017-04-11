@@ -6,7 +6,7 @@ exports.loadAll = function(req, res, next) {
             if (err) {
                 res.json({
                     message: 'Could not find any cocktails due to : ' + err
-                })
+                });
             };
 
             res.json({
