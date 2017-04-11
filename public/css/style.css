@@ -5,6 +5,8 @@ body {
 	color: white;
 	display: block;
 	letter-spacing: 2.5px;
+	font-family: "avenir";
+	font-weight: 800;	
 }
 
 .navbar {
@@ -17,11 +19,21 @@ body {
 .drinkShow {
 	display: flex;
 	font-size: 1.1em;
+
 }
 
 .mainShow {
-	background-color: rgba(0, 0, 0, 0.7);
+	max-width: 100%;
+	width: 600px;
 	padding: 25px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	margin: 0 auto;
+}
+
+.drinkName {
+	text-align: right;
 }
 
 ul {
@@ -35,6 +47,11 @@ p {
 
 .liqourTitle {
 	color: red;
+	font-size: 1.25em;
+}
+
+.liqourPicture {
+	padding: 10px;
 }
 
 .liqourInfo {
@@ -42,3 +59,9 @@ p {
 }
 
 
+
+@media (max-width: 790px) {
+	.drinkShow {
+		flex-direction: column;
+	}
+}
