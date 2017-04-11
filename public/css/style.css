@@ -4,7 +4,7 @@ body {
     background-color: black;
     color: white;
     display: block;
-    letter-spacing: 2.5px;
+    letter-spacing: 3.5px;
     font-family: "avenir";
     font-weight: 800;
 }
@@ -28,6 +28,7 @@ a:hover {
 .navbar {
     padding: 10px 50px 10px 50px;
     text-align: center;
+    background-color: rgba(50, 50, 50, 0.75);
 }
 .navbar-default {
     margin-bottom: 0px;
@@ -40,7 +41,7 @@ a:hover {
 .everyDrink {
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: center;
 }
 
 
@@ -77,13 +78,12 @@ a:hover {
 }
 
 .homeList {
-    width: 50%;
+    width: 30%;
 }
 /*END HOVER EFFECT*/
 
 .mainShow {
     max-width: 100%;
-    width: 600px;
     padding: 25px;
     display: flex;
     justify-content: center;
@@ -114,6 +114,26 @@ p {
 
 }
 
+button {
+    border-radius: 35%;
+    background-color: black;
+    padding: 0px 10px;
+}
+.glyphicon-remove {
+    color: red;
+}
+.searchResult {
+    display: flex;
+    flex-direction: column;
+    font-size: .5em;
+    padding: 0px 10px;
+}
+.searchResult li {
+    list-style: none;
+    padding: 10px 0px;
+}
+
+
 .liqourInfo {
     padding: 10px;
 }
@@ -124,8 +144,12 @@ p {
 
 .searchResultContainer {
     color: white;
-    border: 3px dotted white;
+    border: 0.5px dotted white;
     padding: 25px;
+}
+
+.eitherAllList {
+    display: flex;
 }
 
 .cocktailsSearch {
@@ -145,6 +169,9 @@ p {
     .everyDrink {
         flex-direction: column;
         flex-wrap: nowrap;
+    }
+    .eitherAllList {
+        flex-direction: column;
     }
 }
 
