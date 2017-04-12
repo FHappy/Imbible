@@ -20,7 +20,7 @@ We wanted to reintroduce our users to the storied world of mixology. In doing so
 ## Whiteboard Drawings
 
 ![Wire Frame](/mockup/Wire-Frame.jpg)
-![Name and Pseudo Story](/mockup/Name,-and-pseudo-story.jpg)
+![Name and Pseudo Story](/mockup/Name-and-pseudo-story.jpg)
 ![Continuation](/mockup/Continuation.jpg)
 
 ## Wireframes
