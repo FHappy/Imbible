@@ -23,7 +23,7 @@ function ReviewsNewController(CocktailsService, $state, AuthenticationService, $
             .addReview(id, vm.newReview)
             .then(function resolve(response) {
                 vm.newReview = {};
-                $state.go('show');
+                $state.go('list');
             });
     }
 
