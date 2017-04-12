@@ -266,6 +266,10 @@ button {
     .drinkShow {
         flex-direction: column;
     }   
+    .everyDrink {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 }
 
 @media (max-width: 790px) {
