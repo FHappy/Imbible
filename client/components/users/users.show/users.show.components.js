@@ -1,11 +1,11 @@
 // var template = require(__dirname +  '/users.show.html');
 // var controller = require(__dirname + '/users.show.controller.js');
-//
+
 // var component = {
 //      controller: controller,
 //      template: template
 // };
-//
+
 // angular
 //     .module('imbibleApp')
 //     .component('usersShow', component);

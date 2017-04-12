@@ -1,6 +1,8 @@
-<h1 class="drinkName">
-					 {{$ctrl.cocktail.name}}
-			 </h1>
+<div class="drinkName">
+					 <h1>{{$ctrl.cocktail.name}}</h1> 
+					 <h3 class="drinkNameSeperation"><span>.</span></h3>
+					 <h4><span><a ui-sref="edit">EDIT</a></span></h4>
+</div>
 			 <hr>
 <div class="container-fluid mainShow">
 
@@ -23,21 +25,20 @@
 										 <span class="liqourTitle"></span>
 												 {{ingredient.unit}}
 										 <span class="liqourTitle"></span>
-												 {{ingredient.ingredient}}
+												 <em>{{ingredient.ingredient}}</em>
 												 <br>
 										 <span ng-if="ingredient.label">
 										 <span class="liqourTitle">Label: </span>
-												 {{ingredient.label}}
+												 <em>{{ingredient.label}}</em>
 										 </span>
 										 <span ng-if="ingredient.special">
-										 	<span>{{ingredient.special}}</span>
+										 	<em><span>{{ingredient.special}}</span></em>
 										 </span>
 										<br>
 							 </p>
-							<p class="liqourTitle">Created By: {{$ctrl.cocktail.createdBy}}</p>
+										<span class="liqourTitle">Created By: {{$ctrl.cocktail.createdBy}}</span>
 					 </ul>
-			 </div>
-
+			 </div>		
 	 </div>
 </div>
 
