@@ -51,7 +51,7 @@ a:hover {
 .homeList {
     position: relative;
 }
-.liqourPicture {
+.liqourPictureInList {
     background-color: black;
     position: absolute;
     left: 0;
@@ -62,8 +62,14 @@ a:hover {
     position: absolute;
     color: white;
     font-size: 2em;
-    background-color: rgba(20, 20, 20, 0.75);
+    background-color: rgba(20, 20, 20, 0.85);
     transition: 2s;
+    width: 100%;
+    text-align: center;
+}
+
+.drinkImage {
+    padding: 0;
 }
 
 
