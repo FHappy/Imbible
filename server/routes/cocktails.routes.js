@@ -13,7 +13,8 @@ module.exports = function(app) {
 
   app.route('/api/cocktails/:cocktailId')
   	 .get(cocktails.loadCocktail)
-     .patch(cocktails.editCocktail);
+     .patch(cocktails.editCocktail)
+     .delete(cocktails.deleteCocktail);
 
   app.route('/api/cocktails/new')
      .post(cocktails.addCocktail);

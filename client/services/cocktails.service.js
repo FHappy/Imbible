@@ -8,6 +8,7 @@ function CocktailsService($http) {
     const self = this;
 
     self.editCocktail = editCocktail;
+    self.deleteCocktail = deleteCocktail;
     self.loadAll = loadAll;
     self.loadCocktail = loadCocktail;
     self.addCocktail = addCocktail;
@@ -16,6 +17,11 @@ function CocktailsService($http) {
 
     function editCocktail(cocktail) {
         return $http.patch('/api/cocktails/' + cocktail._id, cocktail);
+    }
+
+    function deleteCocktail(cocktail) {
+        console.log('hello')
+        return $http.delete('/api/cocktails/' + cocktail._id, cocktail);
     }
 
     function loadAll() {
