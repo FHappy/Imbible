@@ -65,3 +65,24 @@ exports.getUser = function (req, res, next) {
           });
     }
 };
+
+exports.editUser = function (req, res, next) {
+    var id = req.params.userId;
+
+    User.findById({_id: id}, function (err, user) {
+      if (err) {res.json({message: 'Could not find user: ' + err});}
+
+      if (req.body.firstName) {user.firstName = req.body.firstName;}
+      if (req.body.lastName) {user.lastName = req.body.lastName;}
+      if (req.body.img) {user.img = req.body.img;}
+      if (req.body.bio) {user.bio = req.body.bio;}
+
+      user.save(function(err) {
+        if (err) {res.json({message: 'Could not update user due to ' + err});}
+
+        res.json({message: 'User successfully updated.'});
+      });
+    });
+
+
+}
