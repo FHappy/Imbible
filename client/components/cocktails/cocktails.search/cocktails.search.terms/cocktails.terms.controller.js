@@ -26,7 +26,7 @@ function CocktailsSearchTermsController(SearchFactory, $scope, CocktailsService)
         var searchUrl = SearchFactory.generateUrl();
         console.log('boolean value of searchUrl is ');
         if (searchUrl) {console.log(searchUrl);};
-        if (vm.terms) {
+        if (vm.terms.length !== 0) {
           CocktailsService
               .search(searchUrl)
               .then(function resolve(response) {
