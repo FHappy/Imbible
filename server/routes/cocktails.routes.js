@@ -21,4 +21,7 @@ module.exports = function(app) {
 
   app.route('/api/cocktails/seeds/images')
      .get(cocktails.addImages);
+
+  app.route('/api/cocktails/:cocktailId/reviews')
+     .post(cocktails.addReview);
 }

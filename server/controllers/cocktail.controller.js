@@ -1,3 +1,4 @@
+var Review = require('mongoose').model('Review');
 var Cocktail = require('mongoose').model('Cocktail');
 var cocktailImagesArray = require('./../db/seeds.images.js');
 
@@ -125,3 +126,20 @@ exports.addImages = function (req, res, next) {
   }
   res.json({foundCocktails: 'slkfjsljf'})
 };
+
+exports.addReview = function (req, res, next) {
+  var id = req.params.cocktailId;
+  console.log(id);
+  console.log(req.body);
+  Cocktail.findById({_id: id}, function(err, cocktail) {
+    if (err) {res.json({message: err});}
+
+    var newReview = new Review(req.body);
+
+    cocktail.reviews.push(newReview);
+    cocktail.save(function(err) {
+      if (err) {console.log(err);}
+    });
+
+  });
+}

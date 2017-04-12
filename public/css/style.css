@@ -194,6 +194,9 @@ button {
 .glyphicon-remove {
     color: red;
 }
+.addIngredient {
+    padding: 3px 5px;
+}
 .searchResult {
     display: flex;
     flex-direction: column;
