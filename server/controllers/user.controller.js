@@ -43,3 +43,20 @@ exports.login = function(req, res, next) {
       }
     })(req, res);
 };
+
+exports.getUser = function (req, res, next) {
+    if (!req.payload._id) {
+      res.status(401).json({
+        "message": "Bummer!: This is a private profile!"
+      });
+    } else {
+      // var id = req.params.userId;
+      var id = req.payload._id;
+      User.find({_id: id})
+          .exec(function(err, user) {
+            if (err) {res.json({message: 'Could not find the specified user.'});}
+
+            res.json({user: user});
+          });
+    }
+};
