@@ -21,8 +21,8 @@ function CocktailsShowController(CocktailsService, $stateParams, $state, Authent
 				console.log(vm.currentUser);
 				vm.cocktail = response.data.cocktail;
 				console.log(vm.cocktail.createdBy);
-				if (vm.currentUser.email === vm.cocktail.createdBy) {
-					vm.yourCocktail = false;
+				if (vm.currentUser.email == vm.cocktail.createdBy) {
+					vm.yourCocktail = true;
 				}
 			});
 	}
