@@ -9,13 +9,12 @@ function CocktailsShowController(CocktailsService, $stateParams, $state, Authent
 	vm.currentUser = AuthenticationService.currentUser();
 	vm.yourCocktail = false;
 	// vm.average = getReviewAverage();
-	vm.average = null;
+	// vm.average = null;
 
 	activate();
 	function activate() {
 		loadCocktail();
-		console.log(vm.cocktail);
-		vm.average = getReviewAverage();
+		// vm.average = getReviewAverage();
 	}
 
 	function loadCocktail() {
@@ -26,6 +25,8 @@ function CocktailsShowController(CocktailsService, $stateParams, $state, Authent
 				vm.cocktail = response.data.cocktail;
 				// vm.average = getReviewAverage();
 				console.log(vm.cocktail.createdBy);
+				// vm.currentCocktail = vm.cocktail;
+				vm.cocktail.average = getReviewAverage(vm.cocktail);
 				if (vm.currentUser.email == vm.cocktail.createdBy) {
 					vm.yourCocktail = true;
 				}
@@ -41,12 +42,13 @@ function CocktailsShowController(CocktailsService, $stateParams, $state, Authent
             });
 	}
 
-	function getReviewAverage() {
-		if (vm.cocktail.reviews) {
-		var reviewsLength = vm.cocktails.reviews.length;
-		var rawAverage = vm.cocktails.reviews.reduce(function(acc, val) {
-			return acc + (val / 5 * reviewsLength);
-		}, 0);
+	function getReviewAverage(cocktail) {
+		console.log(cocktail);
+		if (cocktail.reviews) {
+			var reviewsLength = cocktail.reviews.length;
+			var rawAverage = cocktail.reviews.reduce(function(acc, val) {
+						return acc + (val.rating / (5 * reviewsLength));
+				}, 0);
 		return rawAverage * 100;
 	} else {
 			return "No reviews have been submitted yet. Make a review!";

@@ -44,7 +44,8 @@
 												<span>Delete Cocktail</span>
 											</a id="deleteLink">
 										</div>
-									<span>{{$ctrl.average}}</span>
+									<span ng-show="$ctrl.cocktail.average">Average Rating: {{$ctrl.cocktail.average}}%</span>
+									<span ng-hide="$ctrl.cocktail.average">No reviews have been made yet, make a review!</span>
 					 </ul>
 			 </div>
 	 </div>
