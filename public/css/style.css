@@ -9,6 +9,10 @@ body {
     font-weight: 800;
 }
 
+.container-fluid {
+    margin: 50px;
+}
+
 em {
     font-weight: 100;
 }
@@ -30,13 +34,27 @@ a:hover {
 }
 
 .navbar {
-    padding: 10px 50px 10px 50px;
+    padding: 30px;
     text-align: center;
-    background-color: rgba(50, 50, 50, 0.75);
+    background-color: rgba(25, 25, 25, 0.9);
 }
 .navbar-default {
     margin-bottom: 0px;
 }
+
+.navLinks {
+    color: white;
+    border-radius: 5%;
+}
+.navLinks:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #E85567;
+}
+.navLinks:active {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #E85567;
+}
+
 .drinkShow {
     display: flex;
     font-size: 1.1em;
@@ -256,7 +274,7 @@ button {
     .drinkNameSeperation {
         display: none;
     }
-    .navbar-default {
+    .navbar {
         position: static; 
     }
 }
