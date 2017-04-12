@@ -44,6 +44,13 @@ a:hover {
     align-content: center;
     justify-content: flex-start;
 }
+.deleteIcon {
+    color: white;
+}
+.deleteIcon:hover {
+    color: red;
+}
+
 .navbar {
     padding: 30px;
     text-align: center;
