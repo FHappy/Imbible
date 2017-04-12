@@ -167,6 +167,11 @@ button {
     margin: 0 auto;
 }
 
+.drinkAdd {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
 
 @media (max-width: 790px) {
     .drinkShow {
