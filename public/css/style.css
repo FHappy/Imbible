@@ -48,22 +48,28 @@ a:hover {
     justify-content: center;
 }
 
-
-
-
-
-
-/*START HOME HOVER*/
+.homeList {
+    position: relative;
+}
+.liqourPicture {
+    background-color: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 .drinkText {
+    z-index: 100;
+    position: absolute;
     color: white;
-    
-    padding: 15px;
-    margin: 0;
-    text-align: center;
+    font-size: 2em;
+    background-color: rgba(20, 20, 20, 0.75);
+    transition: 2s;
 }
 
-.thumbnail:hover .drinkText {
 
+.drinkText:hover {
+    color: #E85567;
+    transition: 0.25s;
 }
 
 .thumbnail {
@@ -83,7 +89,15 @@ a:hover {
 }
 
 .homeList {
-    width: 30%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: left;
+}
+
+.homeList:hover {
+
 }
 
 a.thumbnail,
@@ -128,11 +142,6 @@ p {
 .liqourTitle {
     color: #E85567;
     font-size: 1.25em;
-}
-
-.liqourPicture {
-    background-color: black;
-
 }
 
 button {
@@ -225,6 +234,10 @@ button {
     }
     .homeList {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        text-align: left;
     }
     .drinkAdd,
     .drinkEdit {
@@ -236,6 +249,9 @@ button {
     }
     .drinkNameSeperation {
         display: none;
+    }
+    .navbar-default {
+        position: static; 
     }
 }
 
