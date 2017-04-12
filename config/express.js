@@ -1,9 +1,11 @@
 var config                          = require('./config.js');
 var express                         = require('express');
 var logger                          = require('morgan');
+var cookieParser                    = require('cookie-parser');
 var bodyParser                      = require('body-parser');
 var methodOverride                  = require('method-override');
 var session                         = require('express-session');
+var passport                        = require('passport');
 
 module.exports = function() {
     var app = express();
@@ -24,6 +26,15 @@ module.exports = function() {
         resave: true,
         secret: config.sessionSecret
     }));
+    app.use(passport.initialize());
+    app.use(function(err, req, res, next) {
+        if (err.name === 'UnauthorizedError') {
+            res.status(401);
+            res.json({
+                "message": err.name + ": " + err.message
+            });
+        }
+        });
 
     app.use(express.static('./public'));
 
