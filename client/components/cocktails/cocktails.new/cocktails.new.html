@@ -19,7 +19,7 @@
 
 
 				<h1>Ingredients:</h1>
-				<li>
+				<li style="list-style: none;">
 					<div class="form-group">
 						<label for="newCocktail-amount">Amount: </label>
 						<input class="form-control" type="text" ng-model="$ctrl.newIngredient.amount" placeholder="Amount">
@@ -39,11 +39,15 @@
 						</div>
 					</span>
 				</li>
+				<button class="btn btn-danger form-control" ng-click="$ctrl.addIngredient()">
+					<span class="glyphicon glyphicon-plus addIngredient"></span>
+					Add Another Ingredient
+				</button>
+				<hr>
 			<div>
 				<input class="form-control" type="submit" value="New Cocktail" name="">
 			</div>
 		</form>
-		<button class="btn btn-danger" ng-click="$ctrl.addIngredient()">Add More Ingredients</button>
 		<br>
 		<br>
 		<br>

@@ -33,6 +33,24 @@ a:hover {
     text-decoration: none;
 }
 
+#deleteLink {
+    cursor: pointer;
+}
+#deleteLink:hover {
+    color: red;
+}
+.deleteLink {
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+}
+.deleteIcon {
+    color: white;
+}
+.deleteIcon:hover {
+    color: red;
+}
+
 .navbar {
     padding: 30px;
     text-align: center;
@@ -176,6 +194,9 @@ button {
 .glyphicon-remove {
     color: red;
 }
+.addIngredient {
+    padding: 3px 5px;
+}
 .searchResult {
     display: flex;
     flex-direction: column;
@@ -241,6 +262,11 @@ button {
     margin: 0 auto;
 }
 
+@media (max-width: 1200px) {
+    .drinkShow {
+        flex-direction: column;
+    }   
+}
 
 @media (max-width: 790px) {
     .drinkShow {
