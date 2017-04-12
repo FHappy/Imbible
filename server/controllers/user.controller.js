@@ -6,14 +6,17 @@ exports.createUser = function(req, res, next) {
 
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
+    user.username = req.body.username;
     user.email = req.body.email;
     user.setPassword(req.body.password);
 
     user.save(function(err) {
+      console.log('madw it to save function');
         if (err) {res.json({message: err});}
         var token = user.generateJwt();
-        res.status(200);
-        res.json({"token": token});
+        // res.status(200);
+        // res.json({"token": token});
+        res.status(200).json({"token": token});
     });
 };
 
