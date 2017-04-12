@@ -23,8 +23,5 @@ function UsersEditController(UsersService, $state, $stateParams) {
 			});
 	}
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 86346c3e6e66ae9e4580be19270db251ed9ebb67
 module.exports = UsersEditController;
