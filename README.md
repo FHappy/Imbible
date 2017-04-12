@@ -33,7 +33,7 @@ We wanted to reintroduce our users to the storied world of mixology. In doing so
 
 ## ERD
 
-![Imbible ERD](/ERD/Imbible-ERD.png)
+![Imbible ERD](/ERD/Imbible-ERD2.png)
 
 ## User Stories
 
