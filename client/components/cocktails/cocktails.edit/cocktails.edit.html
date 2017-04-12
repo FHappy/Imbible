@@ -1,45 +1,45 @@
 
 <div class="container-fluid">
-	<div class=drinkEdit>
+	<div class="drinkEdit">
 		<form ng-submit="$ctrl.editCocktail($ctrl.current)" id="editCocktail">
-			<h1>
+			<div class="form-group">
 				<label for="current-name">Name: {{$ctrl.cocktail.name}}</label>
-				<input type="text" ng-model="$ctrl.current.name" name="">
-			</h1>
+				<input class="form-control" type="text" ng-model="$ctrl.current.name" name="">
+			</div>
 			<hr>
-			<img src="" alt="">
-				<div>
+			<!-- <img src="" alt=""> -->
+				<div class="form-group">
 					<label for="current-category">Category: {{$ctrl.cocktail.category}}</label>
-					<input type="text" ng-model="$ctrl.current.category" name="">
+					<input class="form-control" type="text" ng-model="$ctrl.current.category" name="">
 				</div>
-				<div>
+				<div class="form-group">
 					<label for="current-preparation">Preparation: {{$ctrl.cocktail.preparation}}</label>
-					<input type="text" ng-model="$ctrl.current.preparation" name="">
+					<input class="form-control" type="text" ng-model="$ctrl.current.preparation" name="">
 				</div>
 				<ul>
 					<li ng-repeat="ingredient in $ctrl.cocktail.ingredients">
-						<div>
+						<div class="form-group">
 							<label for="current-amount">Amount: {{ingredient.amount}}</label>
-							<input type="text" ng-model="$ctrl.current.ingredient.amount" name="">
+							<input class="form-control" type="text" ng-model="$ctrl.current.ingredient.amount" name="">
 						</div>
-						<div>
+						<div class="form-group">
 							<label for="current-unit">Unit: {{ingredient.unit}}</label>
-							<input type="text" ng-model="$ctrl.current.ingredient.unit" name="">
+							<input class="form-control" type="text" ng-model="$ctrl.current.ingredient.unit" name="">
 						</div>
-						<div>
+						<div class="form-group">
 							<label for="current-ingredient">Ingredient: {{ingredient.ingredient}}</label>
-							<input type="text" ng-model="$ctrl.current.ingredient.ingredient" name="">
+							<input class="form-control" type="text" ng-model="$ctrl.current.ingredient.ingredient" name="">
 						</div>
 						<span ng-if="ingredient.label">
-							<div>
+							<div class="form-group">
 								<label for="current-label">Label: {{ingredient.label}}</label>
-								<input type="text" ng-model="$ctrl.current.ingredient.label" name="">
+								<input class="form-control" type="text" ng-model="$ctrl.current.ingredient.label" name="">
 							</div>
 						</span>
 					</li>
 				</ul>
-			<div>
-				<input type="submit" value="Edit Cocktail" name="">
+			<div class="form-group">
+				<input class="form-control" type="submit" value="Edit Cocktail" name="">
 			</div>
 		</form>
 	</div>

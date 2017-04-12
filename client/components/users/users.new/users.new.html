@@ -1,4 +1,4 @@
-	<div class=usersNew>
+<!-- 	<div class=usersNew>
 		<h1>
 			{{$ctrl.users.name}}
 		</h1>
@@ -12,3 +12,33 @@
 	</div>
 </div>
 
+ -->
+
+
+<div class="container-fluid">
+	<div class="drinkEdit">
+		<form ng-submit="$ctrl.editCocktail($ctrl.current)" id="editCocktail">
+			<div class="form-group">
+				<label for="">First Name: </label>
+				<input class="form-control" type="text" ng-model="" name="">
+			</div>
+			<div class="form-group">
+				<label for="">Last Name: </label>
+				<input class="form-control" type="text" ng-model="" name="">
+			</div>
+			<hr>
+			<div class="form-group">
+				<label for="">Userame: </label>
+				<input class="form-control" type="text" ng-model="" name="">
+			</div>
+			<div class="form-group">
+				<label for="">Email: </label>
+				<input class="form-control" type="text" ng-model="" name="">
+			</div>
+
+			<div class="form-group">
+				<input class="form-control" type="submit" value="Sign Up" name="">
+			</div>
+		</form>
+	</div>
+</div>
