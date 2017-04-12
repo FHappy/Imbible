@@ -159,13 +159,22 @@ button {
     padding: 10px;
 }
 
+.listOfTerms {
+    display: flex;
+    padding: 5px;
+}
+.listOfTerms span {
+    padding: 0px 5px;
+}
+.listOfTerms:hover {
+    cursor: pointer;
+}
 .searchFormContainer {
     padding: 25px;
 }
 
 .searchResultContainer {
     color: white;
-    border: 0.5px dotted white;
     padding: 25px;
 }
 
@@ -191,6 +200,12 @@ button {
 
 .form-group label {
     color: #E85567;
+}
+
+.addReview {
+    width: 500px;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 

@@ -38,7 +38,12 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         .state('showUser', {
             url: '/users/:userId',
             // template: '<users-show-component></users-show-component>'
-        });
+        })
+        .state('newReview', {
+            url: '/reviews/new',
+            template: '<reviews-new></reviews-new>'
+        })
+        ;
 
 
     $urlRouterProvider.otherwise('/');
