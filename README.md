@@ -1,6 +1,6 @@
 # WDI-9 Project 3: Imbible
 
-[See the app on Heroku.](https://imbible.herokuapp.com)
+[See the app on Heroku.](https://imbible3.herokuapp.com/)
 
 ## Developers
 
