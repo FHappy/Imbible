@@ -24,3 +24,5 @@ function UsersNewController(UsersService, $state, AuthenticationService) {
             });
     }
 }
+
+module.exports = UsersNewController;
