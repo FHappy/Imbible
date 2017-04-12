@@ -97,7 +97,7 @@ a:hover {
     z-index: 100;
     position: absolute;
     color: white;
-    font-size: 2em;
+    font-size: 1.5em;
     background-color: rgba(20, 20, 20, 0.85);
     transition: 2s;
     width: 100%;
@@ -143,7 +143,7 @@ a:hover {
 }
 
 a.thumbnail,
-a.thumbnail.active, 
+a.thumbnail.active,
 a.thumbnail:focus,
 a.thumbnail:hover {
     border: none;
@@ -265,7 +265,7 @@ button {
 @media (max-width: 1200px) {
     .drinkShow {
         flex-direction: column;
-    }   
+    }
 }
 
 @media (max-width: 790px) {
@@ -301,7 +301,7 @@ button {
         display: none;
     }
     .navbar {
-        position: static; 
+        position: static;
     }
 }
 
