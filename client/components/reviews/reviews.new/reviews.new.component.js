@@ -3,7 +3,7 @@ const template 			= require('./reviews.new.html');
 
 const reviewNewComponent = {
 	controller: controller,
-	template: template
+	template: template,
 };
 
 angular

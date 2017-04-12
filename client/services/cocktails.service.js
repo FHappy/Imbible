@@ -41,8 +41,8 @@ function CocktailsService($http) {
     //     });
     // }
 
-    function addReview() {
-
+    function addReview(id, review) {
+        return $http.post('/api/cocktails/' + id + '/reviews', review);
     }
 
     function editReview() {
