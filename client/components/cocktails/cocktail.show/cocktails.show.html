@@ -1,7 +1,7 @@
 <div class="drinkName">
 					 <h1>{{$ctrl.cocktail.name}}</h1>
 					 <h3 class="drinkNameSeperation"><span>.</span></h3>
-					 <h4><span><a ui-sref="edit">EDIT</a></span></h4>
+					 <h4><span ng-show="$ctrl.yourCocktail"><a ui-sref="edit">EDIT</a></span></h4>
 </div>
 			 <hr>
 <div class="container-fluid mainShow">
