@@ -22,5 +22,5 @@ function UsersEditController(UsersService, $state, $stateParams) {
 				$state.go('list');
 			});
 	}
-
+}
 module.exports = UsersEditController;
