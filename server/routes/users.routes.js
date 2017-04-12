@@ -17,4 +17,5 @@ module.exports = function(app) {
 
     app.route('/api/users/:userId')
        .get(auth, users.getUser);
+      // .get(users.getUser);
 }

@@ -27,6 +27,14 @@ module.exports = function() {
         secret: config.sessionSecret
     }));
     app.use(passport.initialize());
+    app.use(function(err, req, res, next) {
+        if (err.name === 'UnauthorizedError') {
+            res.status(401);
+            res.json({
+                "message": err.name + ": " + err.message
+            });
+        }
+        });
 
     app.use(express.static('./public'));
 
