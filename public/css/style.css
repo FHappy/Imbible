@@ -167,6 +167,12 @@ button {
     margin: 0 auto;
 }
 
+.drinkAdd,
+.drinkEdit {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
 
 @media (max-width: 790px) {
     .drinkShow {
@@ -184,6 +190,11 @@ button {
     }
     .homeList {
         width: 100%;
+    }
+    .drinkAdd,
+    .drinkEdit {
+        max-width: 100%;
+        margin: 0 auto;
     }
 }
 
