@@ -1,18 +1,36 @@
 
-<script>
-  angular.module('imbibleApp', [])
-    .controller('UsersEditController', ['$scope', function($scope) {
-      $scope.list = [];
-      $scope.text = '';
-      $scope.submit = function() {
-        if ($scope.text) {
-          $scope.list.push(this.text);
-          $scope.text = '';
-        }
-      };
-    }]);
-</script>
- <form ng-submit="$ctrl.edituser($ctrl.current.firstName)">
+
+
+<div class="container-fluid">
+	<div class="drinkAdd">
+		<form ng-submit="$ctrl.usersEdit()" id="Cocktail">
+			<div class="form-group">
+				<label for="usersEdit-User Edit">User Edit: </label>
+				<input class="form-control" type="text" ng-model="$ctrl.userEdit.createdBy" placeholder="Username">
+			</div>
+			<div class="form-group">
+				<label for="usersedit">Name: </label>
+				<input class="form-control" type="text" ng-model="$ctrl.UserEdit.name" placeholder="Name">
+			</div>
+			<hr>
+				<!-- <img src="" alt=""> -->
+			<div class="form-group">
+				<label for="usersEdit-username">Username: </label>
+				<input class="form-control" type="text" ng-model="$ctrl.usersEdit.username" placeholder="">
+			</div>
+			<div class="form-group">
+				<label for="usersEdit-password">Password: </label>
+				<input class="form-control" type="text" ng-model="ß$ctrl.uesersEdit.password" placeholder="Password">
+			</div>
+
+
+
+
+<!-- 
+<h2>
+ <title> Edit Details </Title> 
+
+    <form ng-submit="$ctrl.edituser($ctrl.current.firstName)">
       First Name:
       <input type="text" ng-model="text" name="text" />
       <br>
@@ -28,22 +46,10 @@
         <br>
         <br>
         
-      <input type="submit" id="submit" value="Submit" align="right" />
+      <input type="submit" id="submit" value="Submit"  />
       <pre></pre>
-    </form>
-
+    </form> -->
 
 
 
 <!-- <div>
-      Testing
-
-      <br>
-      {{ $ctrl.cocktails.edit }}
-      
-      {{ $ctrl.cocktails.edit }}
-      
-     <div ng-repeat="user in $ctrl.cocktailsEdit">
-     <span> Name: {{user.username}}</span>
-     <span> Username: {{user.username}}></span>
-</div> -->
