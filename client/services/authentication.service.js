@@ -15,6 +15,7 @@ function AuthenticationService($http, $window) {
     self.currentUser = currentUser;
     self.createUser = createUser;
     self.login = login;
+    // self.isLoggedIn = false;
 
 
     function saveToken(token) {
@@ -26,21 +27,24 @@ function AuthenticationService($http, $window) {
     };
 
     function logout() {
+        console.log('logout function hit');
         $window.localStorage.removeItem('cocktail-token');
     };
 
     function isLoggedIn() {
-        var token = getToken();
-        var payload;
+      var token = getToken();
+      var payload;
 
-        if (token) {
-            payload = token.split('.')[1];
-            payload = $window.atob(payload);
-            payload = JSON.parse(payload);
+      if (token) {
+          payload = token.split('.')[1];
+          payload = $window.atob(payload);
+          payload = JSON.parse(payload);
 
-            return payload.exp > Date.now() / 1000;
-        } else {return false;}
-    }
+          return payload.exp > Date.now() / 1000;
+      } else {
+          return false;
+      }
+  }
 
     function currentUser() {
         if (isLoggedIn()) {
@@ -70,9 +74,11 @@ function AuthenticationService($http, $window) {
     };
 
     function login(user) {
+      console.log('hitting authentication service login function');
         return $http.post('/api/users/login', user)
             .then(function resolve(response) {
                 // saveToken(response.token);
+                // checkLogin();
                 saveToken(response.data.token);
             });
     };
