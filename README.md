@@ -19,3 +19,34 @@ We wanted to reintroduce our users to the storied world of mixology. In doing so
 
 ## Whiteboard Drawings
 
+[Wire Frame](/mockup/Wire Frame.jpg)
+[Name and Pseudo Story](/mockup/Name, and pseudo story.jpg)
+[Continuation](/mockup/Continuation.jpg)
+
+## Wireframes
+
+[HOME](/mockup/HOME.png)
+[SIGNUP_EDIT USER](/mockup/SIGNUP_EDIT USER.png)
+[LOGIN](/mockup/LOGIN.png)
+[SHOW PAGE](/mockup/SHOW PAGE.png)
+[UPLOAD_EDIT POST](/mockup/UPLOAD_EDIT POST.png)
+
+## ERD
+
+[Imbible ERD](/ERD/Imbible ERD.png)
+
+## Technologies Used
+
+* AngularJS
+* Bootstrap
+* Express.js
+* Heroku
+* MongoDB
+* Mongoose
+* Node.js
+* Passport
+
+## Reach Goals
+
+* Connect to other cocktail APIs
+* Display ingredients that the user is missing
