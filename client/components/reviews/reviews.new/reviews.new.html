@@ -1,13 +1,13 @@
-<form ng-submit="$ctrl.addNewReview()" id="addReview" class="addReview">
-	<div class="form-group">
-		<label for="addReview-reviewer">Reviewer: </label>
-		<input class="form-control" type="text" ng-model="$ctrl.addReview.reviewer" placeholder="Reviewer">
-	</div>	
-	<div class="form-group">
-		<label for="addReview-rating">Rating: </label>
-		<input class="form-control" type="number" ng-model="$ctrl.addReview.rating" placeholder="Rating From 1 to 5">
-	</div>
-	<div class="form-group">
-		<input class="form-control" type="submit" value="New Review" name="">
-	</div>
-</form>
+<div ng-show="$ctrl.isLoggedIn">
+	<form ng-submit="$ctrl.addNewReview()" id="addReview" class="addReview">
+		<div class="form-group">
+			<label for="addReview-rating">Rating: </label>
+			<input class="form-control" type="number" ng-model="$ctrl.addReview.rating" placeholder="Rating From 1 to 5">
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="submit" value="New Review" name="">
+		</div>
+	</form>
+</div>
+
+<p ng-hide="$ctrl.isLoggedIn">Log in to add a review!</p>
