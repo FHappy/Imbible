@@ -9,39 +9,35 @@
 					 <img class="img-rounded" ng-src="{{$ctrl.cocktail.img}}" alt="" width="500px">
 			 </div>
 
-			 <div class="containter liqourInfo">
+			 <div class="liqourInfo">
 					 <ul>
 					 <span class="liqourTitle">Category: </span>
 							 <p>{{$ctrl.cocktail.category}}</p>
-							 <hr>
+
 							 <!-- ingredients -->
 							 <p>{{$ctrl.cocktail.preparation}}</p>
 
 							 <p ng-repeat="ingredient in $ctrl.cocktail.ingredients">
-									 <span class="liqourTitle">Amount: </span>
-											 {{ingredient.amount}}
-									 <span class="liqourTitle"></span>
-											 {{ingredient.unit}}
-									 <span class="liqourTitle"></span>
-											 {{ingredient.ingredient}}
-									 <span ng-if="ingredient.label">
-									 <span class="liqourTitle">Label: </span>
-											 {{ingredient.label}}
-									 </span>
+										 <span class="liqourTitle">Amount: </span>
+												 {{ingredient.amount}}
+										 <span class="liqourTitle"></span>
+												 {{ingredient.unit}}
+										 <span class="liqourTitle"></span>
+												 {{ingredient.ingredient}}
+												 <br>
+										 <span ng-if="ingredient.label">
+										 <span class="liqourTitle">Label: </span>
+												 {{ingredient.label}}
+										 </span>
+										 <span ng-if="ingredient.special">
+										 	<span>{{ingredient.special}}</span>
+										 </span>
+										<br>
 							 </p>
+							<p class="liqourTitle">Created By: {{$ctrl.cocktail.createdBy}}</p>
 					 </ul>
 			 </div>
 
 	 </div>
 </div>
 
-<!--                     <span class="liqourTitle">Amount: </span>
-											 {{ingredient.amount}}
-									 <span class="liqourTitle">Unit: </span>
-											 {{ingredient.unit}}
-									 <span class="liqourTitle">Ingredient: </span>
-											 {{ingredient.ingredient}}
-									 <span ng-if="ingredient.label">
-									 <span class="liqourTitle">Label: </span>
-											 {{ingredient.label}}
-									 </span> -->

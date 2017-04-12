@@ -51,22 +51,15 @@ a:hover {
 
 /*START HOME HOVER*/
 .drinkText {
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     color: white;
-    transition: 0.5s;
-    background-color: rgba(15,15,15,0.85);
+    
     padding: 15px;
     margin: 0;
+    text-align: center;
 }
 
 .thumbnail:hover .drinkText {
-    opacity: 0.75;
-    position: absolute;
+
 }
 
 .thumbnail {
@@ -74,11 +67,27 @@ a:hover {
     position: relative;
     margin: 10px;
     background: black;
-    border: none;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transition: 1s;
+}
+
+.thumbnail:hover {
+    background-color: rgba(50, 50, 50, 0.75);
 }
 
 .homeList {
     width: 30%;
+}
+
+a.thumbnail,
+a.thumbnail.active, 
+a.thumbnail:focus,
+a.thumbnail:hover {
+    border: none;
+    transition: 0.5s;
 }
 /*END HOVER EFFECT*/
 
@@ -172,6 +181,9 @@ button {
     }
     .eitherAllList {
         flex-direction: column;
+    }
+    .homeList {
+        width: 100%;
     }
 }
 
