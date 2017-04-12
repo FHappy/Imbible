@@ -5,8 +5,12 @@ function CocktailsNewController(CocktailsService, $state, AuthenticationService)
 	const vm = this;
 
 	vm.addNewCocktail = addNewCocktail;
-	vm.newCocktail = {};
+	vm.newCocktail = {
+		ingredients: []
+	};
 	vm.currentUser = AuthenticationService.currentUser();
+	vm.addIngredient = addIngredient
+	vm.newIngredient = {};
 
 	activate();
 
@@ -22,6 +26,12 @@ function CocktailsNewController(CocktailsService, $state, AuthenticationService)
 				vm.newCocktail = {};
 				$state.go('list');
 			});
+	}
+
+	function addIngredient() {
+		vm.newCocktail.ingredients.push(vm.newIngredient);
+		vm.newIngredient = {};
+		console.log(vm.newIngredient);
 	}
 }
 

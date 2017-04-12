@@ -19,23 +19,23 @@
 
 
 				<h1>Ingredients:</h1>
-				<li ng-repeat="ingredient in $ctrl.cocktail.ingredients">
+				<li>
 					<div class="form-group">
 						<label for="newCocktail-amount">Amount: </label>
-						<input class="form-control" type="text" ng-model="$ctrl.newCocktail.ingredient.amount" placeholder="Amount">
+						<input class="form-control" type="text" ng-model="$ctrl.newIngredient.amount" placeholder="Amount">
 					</div>
 					<div class="form-group">
 						<label for="newCocktail-unit">Unit: </label>
-						<input class="form-control" type="text" ng-model="$ctrl.newCocktail.ingredient.unit" placeholder="Unit">
+						<input class="form-control" type="text" ng-model="$ctrl.newIngredient.unit" placeholder="Unit">
 					</div>
 					<div class="form-group">
 						<label for="newCocktail-ingredient">Ingredient: </label>
-						<input class="form-control" type="text" ng-model="$ctrl.newCocktail.ingredient.ingredient" placeholder="Ingredient">
+						<input class="form-control" type="text" ng-model="$ctrl.newIngredient.ingredient" placeholder="Ingredient">
 					</div>
 					<span ng-if="ingredient.label">
 						<div class="form-group">
 							<label for="newCocktail-label">Label: </label>
-							<input class="form-control" type="text" ng-model="$ctrl.newCocktail.ingredient.label" placeholder="Brand Name or Sub-group of Ingredient">
+							<input class="form-control" type="text" ng-model="$ctrl.newIngredient.label" placeholder="Brand Name or Sub-group of Ingredient">
 						</div>
 					</span>
 				</li>
@@ -43,5 +43,9 @@
 				<input class="form-control" type="submit" value="New Cocktail" name="">
 			</div>
 		</form>
+		<button class="btn btn-danger" ng-click="$ctrl.addIngredient()">Add More Ingredients</button>
+		<br>
+		<br>
+		<br>
 	</div>
 </div>
