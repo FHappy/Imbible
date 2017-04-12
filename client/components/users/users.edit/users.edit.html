@@ -1,54 +1,41 @@
 
 
-
 <div class="container-fluid">
 	<div class="drinkAdd">
-		<form ng-submit="$ctrl.usersEdit()" id="Cocktail">
-			<div class="form-group">
-				<label for="usersEdit-User Edit">User Edit: </label>
-				<input class="form-control" type="text" ng-model="$ctrl.userEdit.createdBy" placeholder="Username">
+		<form ng-submit="$ctrl.editUser($ctrl.current)" id="User">
+					<div class="form-group">
+						<label for=editUser">First Name: </label>
+						<input class="form-control" type="text" ng-model="$ctrl.editUser.First Name" placeholder="First Name">
+					</div>
+                       <br>
+					<div class="form-group">
+						<label for=editUser">Last Name: </label>
+						<input class="form-control" type="text" ng-model="$ctrl.editUser.name" placeholder="Last Name">
+					</div>
+                       <br>
+					<div class="form-group">
+						<label for=editUser-username">Username: </label>
+						<input class="form-control" type="text" ng-model="$ctrl.editUser.username" placeholder="username">
+					</div>
+                       <br>
+					<div class="form-group">
+						<label for=editUser-password">Password: </label>
+						<input class="form-control" type="text" ng-model="ß$ctrl.editUser.password" placeholder="Password">
+					</div>
+		         		</div>
+							</span>
+						</li>
+					<div>
+            <br>
+				<input class="form-control" type="submit" value="Submit " name="Submit">
 			</div>
-			<div class="form-group">
-				<label for="usersedit">Name: </label>
-				<input class="form-control" type="text" ng-model="$ctrl.UserEdit.name" placeholder="Name">
-			</div>
-			<hr>
-				<!-- <img src="" alt=""> -->
-			<div class="form-group">
-				<label for="usersEdit-username">Username: </label>
-				<input class="form-control" type="text" ng-model="$ctrl.usersEdit.username" placeholder="">
-			</div>
-			<div class="form-group">
-				<label for="usersEdit-password">Password: </label>
-				<input class="form-control" type="text" ng-model="ß$ctrl.uesersEdit.password" placeholder="Password">
-			</div>
+		</form>
+	</div>
+</div>
 
 
 
 
-<!-- 
-<h2>
- <title> Edit Details </Title> 
-
-    <form ng-submit="$ctrl.edituser($ctrl.current.firstName)">
-      First Name:
-      <input type="text" ng-model="text" name="text" />
-      <br>
-      <br>
-    <form ng-submit="$ctrl.edituser($ctrl.current.lastName)">
-      Last Name:
-      <input type="text" ng-model="text" name="text" />
-      <br>
-      <br>
-      <form ng-submit="$ctrl.edituser($ctrl.current.bio)">
-        Bio Detail:
-      <input type="text" ng-model="text" name="text" />
-        <br>
-        <br>
-        
-      <input type="submit" id="submit" value="Submit"  />
-      <pre></pre>
-    </form> -->
 
 
 

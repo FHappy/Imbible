@@ -11,8 +11,8 @@ function UsersEditController(UsersService) {
 
 
 
-   vm.greeting =  "How about a drink, What will you have?";
-   vm.message =  UsersService.message;
+   // vm.greeting =  "How about a drink, What will you have?";
+   // vm.message =  UsersService.message;
 }
 UsersEditController.$inject = ['UsersService'];
 
