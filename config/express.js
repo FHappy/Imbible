@@ -10,11 +10,12 @@ var passport                        = require('passport');
 module.exports = function() {
     var app = express();
 
-    if (process.env.NODE_ENV === 'development') {
-        app.use(logger('dev'));
-    } else if (process.env.NODE_ENV === 'production') {
-        app.use(compress());
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    //     app.use(logger('dev'));
+    // } else if (process.env.NODE_ENV === 'production') {
+    //     app.use(compress());
+    // }
+    app.use(logger('dev'));
 
     app.use(bodyParser.urlencoded({
         extended: true
