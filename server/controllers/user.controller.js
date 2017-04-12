@@ -47,7 +47,21 @@ exports.login = function(req, res, next) {
     })(req, res);
 };
 
-exports.getUser = function (req, res, next) {
+exports.loadUser = function (req, res, next) {
+    var id = req.params.userId;
+
+    User.findById({_id: id})
+      .exec(function (err, user) {
+        if (err) {res.json({message: 'Could not find user because: ' + err});}
+
+        res.json({user: user});
+      });
+
+
+
+}
+
+exports.getUserShow = function (req, res, next) {
   // console.log(req.payload._id);
     if (!req.payload._id) {
       res.status(401).json({
@@ -83,6 +97,4 @@ exports.editUser = function (req, res, next) {
         res.json({message: 'User successfully updated.'});
       });
     });
-
-
 }

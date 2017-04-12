@@ -20,5 +20,6 @@ module.exports = function(app) {
       // .get(users.getUser);
 
     app.route('/api/users/edit/:userId')
+       .get(users.loadUser)
        .patch(users.editUser);
 }
