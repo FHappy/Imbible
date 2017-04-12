@@ -1,36 +1,31 @@
 <div>
-  <h2>'All' Results</h2>
-  <ul>
-    <li ng-repeat="result in $ctrl.allResults">
-      <a ui-sref="show({cocktailId: result._id})">{{result.name}}</a>
-    </li>
-  </ul>
+	<h2>'All' Results</h2>
+	<ul>
+		<li ng-repeat="result in $ctrl.allResults">
+			<a ui-sref="show({cocktailId: result._id})">{{result.name}}</a>
+		</li>
+	</ul>
 </div>
+
+
 
 
 <!-- <div>
   <h2>'All' Results</h2>
   <ul>
-    <li ng-repeat="result in $ctrl.allResults">
-		<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">{{result.name}}</button>
-		<div id="demo" class="collapse">
-			<p ng-repeat="ingredient in $ctrl.cocktail.ingredients">
-					 <span class="liqourTitle">Amount: </span>
-							 {{ingredient.amount}}
-					 <span class="liqourTitle"></span>
-							 {{ingredient.unit}}
-					 <span class="liqourTitle"></span>
-							 {{ingredient.ingredient}}
-							 <br>
-					 <span ng-if="ingredient.label">
-					 <span class="liqourTitle">Label: </span>
-							 {{ingredient.label}}
-					 </span>
-					 <span ng-if="ingredient.special">
-					 	<span>{{ingredient.special}}</span>
-					 </span>
-			</p>
+    <div ng-repeat="result in $ctrl.allResults">
+		<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#drinkInfo">{{result.name}}</button>
+		
+		<div id="drinkInfo" class="collapse" >
+				<span class="liqourTitle">Amount: </span>
+					{{result.name}}
+				<span class="liqourTitle"></span>
+					{{result.ingredient.unit}}
+				<span class="liqourTitle"></span>
+					{{ingredient.ingredient}}
 		</div>
-    </li>
+    </div>
   </ul>
-</div> -->
+</div>
+
+ -->
