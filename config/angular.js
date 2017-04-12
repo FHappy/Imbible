@@ -33,7 +33,7 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         })
         .state('editUser', {
             url: '/users/edit/:userId',
-            template: ''
+            template: '<users-edit-component></users-edit-component>'
         })
         .state('showUser', {
             url: '/users/:userId',
