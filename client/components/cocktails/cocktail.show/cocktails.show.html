@@ -39,7 +39,10 @@
 										<span class="liqourTitle">Created By: {{$ctrl.cocktail.createdBy}}</span>
 										<br>
 										<br>
-										<button ng-click="$ctrl.deleteCocktail(cocktail._id)">Delete Cocktail</button>
+										<div class="deleteLink">
+											<span class="glyphicon glyphicon-remove"></span>
+											<a id="deleteLink" ng-click="$ctrl.deleteCocktail(cocktail._id)">Delete Cocktail</a id="deleteLink">
+										</div>
 					 </ul>
 			 </div>		
 	 </div>

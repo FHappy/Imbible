@@ -33,6 +33,17 @@ a:hover {
     text-decoration: none;
 }
 
+#deleteLink {
+    cursor: pointer;
+}
+#deleteLink:hover {
+    color: red;
+}
+.deleteLink {
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+}
 .navbar {
     padding: 30px;
     text-align: center;
@@ -241,6 +252,11 @@ button {
     margin: 0 auto;
 }
 
+@media (max-width: 1200px) {
+    .drinkShow {
+        flex-direction: column;
+    }   
+}
 
 @media (max-width: 790px) {
     .drinkShow {
