@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.route('/api/users/login')
        .post(users.login);
 
-    app.route('/api/users/:userId')
+    app.route('/api/users/profile')
        .get(auth, users.getUser);
       // .get(users.getUser);
 }

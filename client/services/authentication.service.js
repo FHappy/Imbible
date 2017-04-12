@@ -22,7 +22,7 @@ function AuthenticationService($http, $window) {
     };
 
     function getToken() {
-        return $window.loclaStorage['cocktail-token'];
+        return $window.localStorage['cocktail-token'];
     };
 
     function logout() {
