@@ -5,6 +5,7 @@ function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchF
 
     vm.coctails = [];
     vm.search = search;
+    vm.newSearchTerm;
     activate();
 
     function activate() {
@@ -14,6 +15,7 @@ function CocktailsFormController(CocktailsService, $stateParams, $scope, SearchF
     function search(newSearchTerm) {
         if (newSearchTerm) {
           SearchFactory.terms.push(newSearchTerm);
+          vm.newSearchTerm = null;
           // var allSearchTerms = SearchFactory.terms;
           // var searchUrl = '?';
           // for (var i = 0; i < allSearchTerms.length; i++) {
