@@ -14,4 +14,12 @@ function UsersService($http) {
     function createUser(user) {
         return $http.post('/api/users/', user);
     }
+
+    function loadUser(userId) {
+        return $http.get('/api/users/' + userId);
+    }
+
+    function editUser(user) {
+        return $http.patch('/api/users/edit/' + user._id, user);
+    }
 }

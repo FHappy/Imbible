@@ -18,4 +18,8 @@ module.exports = function(app) {
     app.route('/api/users/profile')
        .get(auth, users.getUser);
       // .get(users.getUser);
+
+    app.route('/api/users/edit/:userId')
+       .get(users.loadUser)
+       .patch(users.editUser);
 }

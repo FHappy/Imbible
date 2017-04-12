@@ -2,9 +2,9 @@
 		<h1>
 			{{$ctrl.users.name}}
 		</h1>
-		
+
 		<ul>
-		    <li>  
+		    <li>
                {{users.name}}
 			</li>
 
@@ -17,23 +17,27 @@
 
 <div class="container-fluid">
 	<div class="drinkEdit">
-		<form ng-submit="$ctrl.editCocktail($ctrl.current)" id="editCocktail">
+		<form ng-submit="$ctrl.addNewUser()" id="editCocktail">
 			<div class="form-group">
 				<label for="">First Name: </label>
-				<input class="form-control" type="text" ng-model="" name="">
+				<input class="form-control" type="text" ng-model="$ctrl.newUser.firstName" name="">
 			</div>
 			<div class="form-group">
 				<label for="">Last Name: </label>
-				<input class="form-control" type="text" ng-model="" name="">
+				<input class="form-control" type="text" ng-model="$ctrl.newUser.lastName" name="">
 			</div>
 			<hr>
 			<div class="form-group">
 				<label for="">Userame: </label>
-				<input class="form-control" type="text" ng-model="" name="">
+				<input class="form-control" type="text" ng-model="$ctrl.newUser.username" name="">
 			</div>
 			<div class="form-group">
 				<label for="">Email: </label>
-				<input class="form-control" type="text" ng-model="" name="">
+				<input class="form-control" type="email" ng-model="$ctrl.newUser.email" name="">
+			</div>
+			<div class="form-group">
+				<label for="">Password: </label>
+				<input class="form-control" type="password" ng-model="$ctrl.newUser.password">
 			</div>
 
 			<div class="form-group">
