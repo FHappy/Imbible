@@ -8,4 +8,4 @@ const UsersLoginComponent = {
 
 angular
   .module('imbibleApp')
-  .component('usersLogin', UsersLoginComponent);
+  .component('userLogin', UsersLoginComponent);
