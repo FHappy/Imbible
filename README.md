@@ -35,6 +35,10 @@ We wanted to reintroduce our users to the storied world of mixology. In doing so
 
 ![Imbible ERD](/ERD/Imbible-ERD.png)
 
+## User Stories
+
+[Trello Board](https://trello.com/b/SB2a1Q4g/imbible-app)
+
 ## Technologies Used
 
 * AngularJS
@@ -46,7 +50,14 @@ We wanted to reintroduce our users to the storied world of mixology. In doing so
 * Node.js
 * Passport
 
+## Challenges
+
+* GitHub collaboration with git branches, merging, and pull requests
+* Scraping cocktail images from Imgur
+* Passport authentication with Angular
+
 ## Reach Goals
 
 * Connect to other cocktail APIs
 * Display ingredients that the user is missing
+* Bootstrap acordian collapse for cocktail search results
