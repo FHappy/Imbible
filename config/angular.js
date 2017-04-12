@@ -29,7 +29,7 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         })
         .state('login', {
             url: '/users/login',
-            template: ''
+            template: '<user-login></user-login>'
         })
         .state('editUser', {
             url: '/users/edit/:userId',
@@ -37,6 +37,7 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
         })
         .state('showUser', {
             url: '/users/:userId',
+            template: ''
             // template: '<users-show-component></users-show-component>'
         })
         .state('newReview', {

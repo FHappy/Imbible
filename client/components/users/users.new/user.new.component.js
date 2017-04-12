@@ -1,7 +1,7 @@
-var template = require(__dirname +  '/users.new.html');
-var controller = require(__dirname + '/users.new.controllers.js');
+const template = require(__dirname +  '/users.new.html');
+const controller = require(__dirname + '/users.new.controllers.js');
 
-var component = {
+const component = {
      controller: controller,
      template: template
 };

@@ -9,9 +9,17 @@ function UsersService($http) {
 
     self.createUser = createUser;
     self.loadUser = loadUser;
-    self.updateUser = updateUser;
+    self.editUser = editUser;
 
     function createUser(user) {
         return $http.post('/api/users/', user);
+    }
+
+    function loadUser(userId) {
+        return $http.get('/api/users/' + userId);
+    }
+
+    function editUser(user) {
+        return $http.patch('/api/users/edit/' + user._id, user);
     }
 }

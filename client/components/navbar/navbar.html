@@ -1,0 +1,18 @@
+<nav class="navbar navbar-fixed-top">
+
+	<div class="navbar-header">
+		<a class="navbar-brand" ui-sref="list">IMBIBLE</a>
+	</div>
+
+	<ul class="nav navbar-nav navbar-right">
+		<li><a class="navLinks" ui-sref="list">HOME</a></li>
+		<li><a class="navLinks" ui-sref="search">WHAT CAN I MAKE?</a></li>
+		<li><a class="navLinks" ng-show="$ctrl.isLoggedIn" ui-sref="new">UPLOAD</a></li>
+		<li><a class="navLinks" ng-hide="$ctrl.isLoggedIn" ui-sref="newUser">SIGN UP</a></li>
+		<li><a class="navLinks" ng-show="$ctrl.isLoggedIn" ng-click="$ctrl.logout()">LOGOUT</a></li>
+		<li><a class="navLinks" ng-hide="$ctrl.isLoggedIn" ui-sref="login">LOGIN</a></li>
+	</ul>
+
+<!-- <p>{{$ctrl.isLoggedIn()}}</p> -->
+
+</nav>

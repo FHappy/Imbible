@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<div class="drinkEdit">
+		<form ng-submit="$ctrl.login()" id="editCocktail">
+			<div class="form-group">
+				<label for="">Email: </label>
+				<input class="form-control" type="email" ng-model="$ctrl.info.email" name="">
+			</div>
+				<label for="">Password: </label>
+				<input class="form-control" type="password" ng-model="$ctrl.info.password">
+			</div>
+      <br>
+			<div class="form-group">
+				<input class="form-control" ng-click="$ctrl.login()" type="submit" value="Login" name="">
+			</div>
+		</form>
+	</div>
+</div>

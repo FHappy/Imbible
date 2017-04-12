@@ -1,19 +1,26 @@
-function UsersEditController(UsersService) {
+UsersEditController.$inject = ['UsersService', '$state', '$stateParams'];
+
+
+function UsersEditController(UsersService, $state, $stateParams) {
 	var vm = this;
 
-    var thePromise = UsersService.getUsers();
+	vm.current = {};
+  vm.editUser = editUser;
 
-    //
-    UsersService.getUsers
-        thePromise.then(function (userslist) {
-           vm.usersList = userslist;
-        });
+	function activate() {
+		UsersService
+			.loadUser($stateParams.userId)
+			.then(function resolve(response) {
+				vm.current = response.data.user;
+			});
+	}
 
-
-
-   // vm.greeting =  "How about a drink, What will you have?";
-   // vm.message =  UsersService.message;
-}
-UsersEditController.$inject = ['UsersService'];
+	function editUser() {
+		UsersService
+			.editUser(vm.current)
+			.then(function resolve(response) {
+				$state.go('list');
+			});
+	}
 
 module.exports = UsersEditController;
