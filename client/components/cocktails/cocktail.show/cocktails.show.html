@@ -39,12 +39,12 @@
 										<span class="liqourTitle">Created By: {{$ctrl.cocktail.createdBy}}</span>
 										<br>
 										<br>
-										<div class="deleteLink">
+										<div ng-show="$ctrl.yourCocktail" class="deleteLink">
 											<a id="deleteLink" ng-click="$ctrl.deleteCocktail(cocktail._id)">
 												<span>Delete Cocktail</span>
 											</a id="deleteLink">
 										</div>
-
+									<span>{{$ctrl.average}}</span>
 					 </ul>
 			 </div>
 	 </div>
