@@ -12,6 +12,8 @@ function CocktailsService($http) {
     self.loadCocktail = loadCocktail;
     self.addCocktail = addCocktail;
     self.search = search;
+    self.addReview = addReview;
+    self.editReview = editReview;
 
 
     function editCocktail(cocktail) {
@@ -38,4 +40,12 @@ function CocktailsService($http) {
     //       query: queryParams
     //     });
     // }
+
+    function addReview() {
+
+    }
+
+    function editReview() {
+
+    }
 }
