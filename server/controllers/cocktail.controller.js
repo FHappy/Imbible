@@ -63,6 +63,21 @@ exports.editCocktail = function(req, res, next) {
 
 }
 
+exports.deleteCocktail = function destroyAction(req, res, next) {
+
+    console.log('sup');
+    var id = req.params.cocktailId;
+    console.log(id)
+
+    Cocktail.findByIdAndRemove(id, function(err) {
+            console.log('hi')
+
+            if(err) res.json({message: 'Could not delete cocktail b/c:' + err});
+
+            res.json({message: 'Cocktail successfully deleted'});
+    });
+}
+
 exports.searchCocktails = function(req, res, next) {
     var queryArray = [];
     for (x in req.query) {
