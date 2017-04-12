@@ -1,5 +1,5 @@
 <div class="drinkName">
-					 <h1>{{$ctrl.cocktail.name}}</h1> 
+					 <h1>{{$ctrl.cocktail.name}}</h1>
 					 <h3 class="drinkNameSeperation"><span>.</span></h3>
 					 <h4><span><a ui-sref="edit">EDIT</a></span></h4>
 </div>
@@ -39,11 +39,10 @@
 										<span class="liqourTitle">Created By: {{$ctrl.cocktail.createdBy}}</span>
 										<br>
 										<br>
-										<button ng-click="$ctrl.deleteCocktail(cocktail._id)">Delete Cocktail</button>
+										<button ng-show="$ctrl.yourCocktail" ng-click="$ctrl.deleteCocktail(cocktail._id)">Delete Cocktail</button>
 					 </ul>
-			 </div>		
+			 </div>
 	 </div>
 </div>
 <hr>
 <reviews-new></reviews-new>
-
