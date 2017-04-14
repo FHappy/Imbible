@@ -265,15 +265,11 @@ button {
 @media (max-width: 1200px) {
     .drinkShow {
         flex-direction: column;
-<<<<<<< HEAD
     }   
     .everyDrink {
         flex-direction: column;
         flex-wrap: nowrap;
-=======
->>>>>>> 927e43121b0d003c6a3945e64f4e7b69d461332c
-    }
-}
+
 
 @media (max-width: 790px) {
     .drinkShow {
