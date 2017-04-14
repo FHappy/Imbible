@@ -1,7 +1,7 @@
 <div class="drinkName">
 					 <h1>{{$ctrl.cocktail.name}}</h1>
 					 <h3 class="drinkNameSeperation"><span>.</span></h3>
-					 <h4><span><a ui-sref="edit">EDIT</a></span></h4>
+					 <h4><span ng-show="$ctrl.yourCocktail"><a ui-sref="edit">EDIT</a></span></h4>
 </div>
 			 <hr>
 <div class="container-fluid mainShow">
@@ -39,12 +39,13 @@
 										<span class="liqourTitle">Created By: {{$ctrl.cocktail.createdBy}}</span>
 										<br>
 										<br>
-										<div class="deleteLink">
+										<div ng-show="$ctrl.yourCocktail" class="deleteLink">
 											<a id="deleteLink" ng-click="$ctrl.deleteCocktail(cocktail._id)">
 												<span>Delete Cocktail</span>
 											</a id="deleteLink">
 										</div>
-
+									<span ng-show="$ctrl.cocktail.average">Average Rating: {{$ctrl.cocktail.average}}%</span>
+									<span ng-hide="$ctrl.cocktail.average">No reviews have been made yet, make a review!</span>
 					 </ul>
 			 </div>
 	 </div>
