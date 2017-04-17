@@ -84,9 +84,6 @@ a:hover {
     justify-content: center;
 }
 
-.homeList {
-    position: relative;
-}
 .liqourPictureInList {
     background-color: black;
     position: absolute;
@@ -97,7 +94,7 @@ a:hover {
     z-index: 100;
     position: absolute;
     color: white;
-    font-size: 1.5em;
+    font-size: 2em;
     background-color: rgba(20, 20, 20, 0.85);
     transition: 2s;
     width: 100%;
@@ -131,19 +128,16 @@ a:hover {
 }
 
 .homeList {
-    width: 20%;
     display: flex;
     justify-content: center;
     align-content: center;
     text-align: left;
+    position: relative;
 }
 
-.homeList:hover {
-
-}
 
 a.thumbnail,
-a.thumbnail.active,
+a.thumbnail.active, 
 a.thumbnail:focus,
 a.thumbnail:hover {
     border: none;
@@ -262,14 +256,6 @@ button {
     margin: 0 auto;
 }
 
-@media (max-width: 1200px) {
-    .drinkShow {
-        flex-direction: column;
-    }   
-    .everyDrink {
-        flex-direction: column;
-        flex-wrap: nowrap;
-
 
 @media (max-width: 790px) {
     .drinkShow {
@@ -285,13 +271,6 @@ button {
     .eitherAllList {
         flex-direction: column;
     }
-    .homeList {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        text-align: left;
-    }
     .drinkAdd,
     .drinkEdit {
         max-width: 100%;
@@ -304,7 +283,7 @@ button {
         display: none;
     }
     .navbar {
-        position: static;
+        position: static; 
     }
 }
 
